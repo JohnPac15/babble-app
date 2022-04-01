@@ -3,9 +3,11 @@ import React from 'react';
 const Profile = () => {
   return (
     <div>
-      <div className="flex-row mb-3">
+      <div className="absolute">
         <h2 className="bg-dark text-secondary p-3 display-inline-block">
+       
           {/* Viewing <usernames>'s profile. */}
+          Profile page
         </h2>
       </div>
 
