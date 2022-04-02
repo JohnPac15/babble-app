@@ -13,7 +13,7 @@ function SideBar({ initialSelectedIcon }) {
   const [selected, setSelected] = useState("Home");
 
   return (
-    <div className=" bg-slate-800 text-white">
+    <div className=" bg-slate-800 text-white drop-shadow-lg">
       <div className=" container mx-auto flex justify-between">
         <div>
           <h1 className="inline-flex items-center py-6 px-3 mr-4 text-4xl bold cursive tracking-wide">
@@ -56,7 +56,7 @@ function SideBar({ initialSelectedIcon }) {
           </Link>
         </div>
 
-        <div>
+        <div className="">
           <Link
             to="/login"
             className="inline-flex items-center py-3 px-3 rounded text-lg"
