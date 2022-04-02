@@ -1,3 +1,66 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Basic Styling */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:ital,wght@0,100;0,300;0,400;1,100;1,300;1,700&family=Source+Sans+Pro:wght@300;900&display=swap');
+
+:root {
+  --black:#164e63;
+  --grey:#a4b2bc;
+  --white: #fff;
+  --background:#d4d4d4;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--background);
+  font-family: 'Poppins', sans-serif;
+
+}
+
+.icon {
+  width: 1.2rem;
+  height: auto;
+  color: var(--white);
+}
+
+li {
+  list-style: none;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  min-height: 100vh;
+}
+
+.row {
+  display: flex;
+  width: 100%;
+  height: 100%;
+
+}
+
+.col {
+  margin: 0 5px 30px;
+  padding: 20px;
+  width: 100%;
+  background-color: var(--white);
+  border-radius: 6px;
+
+}
+
+.col-25 {
+  width: 25%;
+}
+
+
+
+
+
+
+

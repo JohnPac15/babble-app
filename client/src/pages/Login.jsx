@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'
+
 const Login = (props) => {
   const [formState, setFormState] = useState({ email: '', password: '' });
 
@@ -25,11 +25,11 @@ const Login = (props) => {
   };
 
   return (
-    <main className='flex-row justify-center mb-4'>
-      <div className='col-12 col-md-6'>
-        <div className='card'>
-          <h4 className='card-header'>Login</h4>
-          <div className='card-body'>
+    <main >
+      <div >
+        <div >
+          <h4 >Login</h4>
+          <div >
             <form onSubmit={handleFormSubmit}>
               <input
                 className='form-input'
@@ -49,16 +49,10 @@ const Login = (props) => {
                 value={formState.password}
                 onChange={handleChange}
               />
-              <button className='btn d-block w-100' type='submit'>
+              <button  type='submit'>
                 Submit
               </button>
             </form>
-            <Link
-            to="/signup"
-            className="inline-flex items-center py-3 px-3  rounded text-lg"
-          >
-            Signup
-          </Link>
           </div>
         </div>
       </div>
