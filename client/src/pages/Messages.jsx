@@ -1,22 +1,12 @@
 import React from 'react'
-import styled from "styled-components"
+import Chat from '../components/Chat';
+import Chatsidebar from '../components/Chatsidebar';
 
 function Messages() {
   return (
     <div className='container'>
-      <div className='row'>
-        <div className='col col-25'>
-          <ul>
-            <li>
-              <p>User email</p>
-              <p>User Username</p>
-            </li>
-          </ul>
-        </div>
-        <div className='col'>
-          chat box
-        </div>
-      </div>
+      <Chatsidebar/>
+      <Chat/>
     </div>
   )
 }
