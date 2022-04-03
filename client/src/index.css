@@ -1,0 +1,101 @@
+/* Basic Styling */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:ital,wght@0,100;0,300;0,400;1,100;1,300;1,700&family=Source+Sans+Pro:wght@300;900&display=swap');
+
+:root {
+  --grey:#1f2937;
+  --background:#374151;
+  --white: #fff;
+  --nav-size: 70px;
+  --border: 1px solid #474a4d;
+  --border-radius: 8px;
+  --speed:500ms;
+
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--background);
+  font-family: 'Poppins', sans-serif;
+  color: var(--white);
+  overflow-x: hidden; /* Hide scrollbars */
+}
+
+.icon {
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: var(--white);
+}
+
+.container {
+  max-width: 90%;
+  margin: auto;
+  background-color: var(--grey);
+  min-height: 80vh;
+  width: 100%;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  padding-left: 0;
+  box-shadow: -1px 4px 20px -6px rgba(0, 0, 0, 0.75);
+}
+
+.navbar {
+  height: var(--nav-size);
+  background-color: var(--background);
+  position: fixed;
+  padding-top:2rem;
+  padding-left: 6rem;
+}
+
+.navbar-nav {
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-item {
+  width: calc(var(--nav-size)* 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-button {
+  --button-size: calc(varvar(--nav-size)* 0.5);
+  width: var(--button-size);
+  height: var(--button-size);
+  border-radius: 50%;
+  padding: 10px;
+  margin: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1f2937;
+  transition: filter 300ms;
+}
+
+.icon-button:hover {
+  filter: brightness(1.2);
+}
+
+
+
+
+
+
+
