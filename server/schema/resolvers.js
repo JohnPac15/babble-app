@@ -84,6 +84,18 @@ const resolvers = {
       }
       // throw new AuthenticationError("You need tobe logged in!");
     },
+    removeComment: async (parent, args, context) => {
+      if(context.user){
+        const deleteComment = await Post.findOneAndUpdate(
+          { _id: args.postId },
+          {$pull: {comments: {_id: args.commentId}}},
+          {new: true}
+        )
+        console.log(deleteComment)
+        return deleteComment
+      }
+      throw new AuthenticationError("You need to be logged in!");
+    }
   },
 };
 
