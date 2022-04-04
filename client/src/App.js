@@ -1,5 +1,6 @@
 import NavBar from "./components/Navbar/Navbar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {SocketContext, socket} from "./components/socket";
 import Login from "./pages/Login";
 import Home from './pages/Home'
 import Chat from "./pages/Chat";
@@ -10,6 +11,7 @@ function App() {
   return (
     <div>
       <Router>
+        <SocketContext.Provider value={socket}>
         <div>
           <NavBar />
           <div className="pages">
@@ -22,6 +24,7 @@ function App() {
             </Switch>
           </div>
         </div>
+        </SocketContext.Provider>    
       </Router>
     </div>
   );
