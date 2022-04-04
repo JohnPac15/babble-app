@@ -19,10 +19,9 @@ const Signup = () => {
   };
 
   return (
-    <main >
-      <div >
-        <div >
-          <h4 >Sign Up</h4>
+      <div className='form-container'>
+        <div className='wrapper'>
+          <h4  className='title'>Sign Up</h4>
           <div >
             <form onSubmit={handleFormSubmit}>
               <input
@@ -53,13 +52,12 @@ const Signup = () => {
                 onChange={handleChange}
               />
               <button  type='submit'>
-                Submit
+                Register
               </button>
             </form>
           </div>
         </div>
       </div>
-    </main>
   );
 };
 
