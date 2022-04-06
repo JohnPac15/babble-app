@@ -75,7 +75,7 @@ const resolvers = {
     },
     removePost: async (parent, args, context) => {
       if (context.user) {
-        const deleteBook = await Post.findByIdAndDelete(
+        const deleteBook = await Posts.findByIdAndDelete(
           {_id: args._id},
           { new: true}
         )
@@ -86,7 +86,7 @@ const resolvers = {
     },
     removeComment: async (parent, args, context) => {
       if(context.user){
-        const deleteComment = await Post.findOneAndUpdate(
+        const deleteComment = await Posts.findOneAndUpdate(
           { _id: args.postId },
           {$pull: {comments: {_id: args.commentId}}},
           {new: true}
@@ -95,6 +95,19 @@ const resolvers = {
         return deleteComment
       }
       throw new AuthenticationError("You need to be logged in!");
+    },
+    addFriend: async( parent, args, context) =>{
+      console.log(args)
+      if(context.user){
+        const moreFriends = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { friends: args.friendId } },
+          { new: true }
+        ).populate('friends');
+
+        return moreFriends
+      }
+      throw new AuthenticationError('You need to be logged in!');
     }
   },
 };
