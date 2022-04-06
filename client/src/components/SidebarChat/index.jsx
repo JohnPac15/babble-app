@@ -1,12 +1,21 @@
-import React from "react";
-import {BsPersonCircle, BsSearch} from 'react-icons/bs'
-import {BiMessageDetail, BiDotsVerticalRounded} from 'react-icons/bi'
-import './index.css'
+import React, { useState } from "react";
+import { BsSearch, BsArrowRightCircle } from "react-icons/bs";
+import { BiMessageDetail, BiDotsVerticalRounded } from "react-icons/bi";
+import "./index.css";
 
 function SidebarChat() {
+  const [click, setClick] = useState(false);
+
+  const handleClick = () => setClick(!click);
   return (
     <div>
-      <div className="sidebar-chat">
+
+      <div className="sidebar-icons" onClick={handleClick}>
+        <i className={click ? "fas fa-times" : "fa fa-arrow-right"}></i>
+      </div>
+
+        <div className={click ? "sidebar-chat active" : "sidebar-chat"}>
+
         <div className="sidebar__header">
           <img src="https://randomuser.me/api/portraits/women/11.jpg" alt="" />
           <div className="sidebar__headerRight">
@@ -26,20 +35,23 @@ function SidebarChat() {
         <div className="sidebar__chats">
           {/* display friends */}
           <div className="chat__container">
-          <img src="https://randomuser.me/api/portraits/men/11.jpg" alt="" />
+            <img src="https://randomuser.me/api/portraits/men/11.jpg" alt="" />
             <p>Username</p>
-          </div>          
+          </div>
           <div className="chat__container">
-          <img src="https://randomuser.me/api/portraits/women/12.jpg" alt="" />
+            <img
+              src="https://randomuser.me/api/portraits/women/12.jpg"
+              alt=""
+            />
             <p>Username</p>
-          </div>          
+          </div>
           <div className="chat__container">
-          <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="" />
+            <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="" />
             <p>Username</p>
-          </div>          
+          </div>
+        </div>
         </div>
       </div>
-    </div>
   );
 }
 
