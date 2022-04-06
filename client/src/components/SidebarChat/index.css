@@ -3,6 +3,7 @@
   flex-direction: column;
   flex: 1;
   padding: 20px;
+
 }
 
 .sidebar__header {
@@ -80,6 +81,47 @@ img {
 .chat__container p {
   padding-left: 10px;
 }
+
+.sidebar-icons {
+  display: none;
+  color: #fff;
+}
+
+@media screen and (max-width: 960px) {
+
+
+  .sidebar-chat {
+    flex-direction: column;
+    width: 90%;
+    height: 100%;
+    position: absolute;
+    top: 100px;
+    left: -110%;
+    opacity: 1;
+    transition: all 0.5s ease;
+  }
+
+
+  .sidebar-chat.active {
+    background: var(--background);
+    left: 0px;
+    opacity: 1;
+    transition: all 0.5s ease;
+    z-index: 1;
+  }
+
+  .sidebar-icons {
+    display: block;
+    position: absolute;
+    top: 90px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 1.2rem;
+  }
+  
+}
+
+
 
 
 

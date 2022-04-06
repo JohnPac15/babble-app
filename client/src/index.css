@@ -17,7 +17,7 @@
 
 body {
   background-color: var(--background);
-  overflow-y: hidden;
+  /* overflow-y: hidden; */
 }
 
 .pages {
@@ -86,4 +86,10 @@ button {
 .form-container .title {
   font-size: 2rem;
   text-align: center;
+}
+
+@media screen and (max-width: 830px){
+  .chat-wrapper {
+    flex-direction: column;
+  }
 }
