@@ -40,8 +40,8 @@ function Messages({ socket }) {
             className="message-container"
             title={`Sent at ${new Date(message.time).toLocaleTimeString()}`}
           >
-            <span className="user">{message.user.name}:</span>
-            <span className="message">{message.value}</span>
+            <span className="user">{message.user.name}: </span>
+            <span className="message">{message.value} </span>
             <span className="date">{new Date(message.time).toLocaleTimeString()}</span>
           </div>
         ))

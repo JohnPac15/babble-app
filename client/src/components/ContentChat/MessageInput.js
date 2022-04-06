@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {FiSend, FiSmile} from 'react-icons/fi'
 
 const NewMessage = ({socket}) => {
   const [value, setValue] = useState('');
