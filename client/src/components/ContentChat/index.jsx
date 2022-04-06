@@ -1,35 +1,17 @@
-import React, {useState, useEffect} from 'react';
-import io from 'socket.io-client';
-import Messages from './Messages';
-import MessageInput from './MessageInput';
+import React from 'react';
+import useSocket from '../../hooks/useSocket';
+import Home from '../../pages/Home';
+import Login from '../../pages/Login';
 
 import './index.css'
 
 function ContentChat() {
-  const [socket, setSocket] = useState(null);
-
-  useEffect(() => {
-    const newSocket = io(`http://${window.location.hostname}:3002`);
-    setSocket(newSocket);
-    return () => newSocket.close();
-  }, [setSocket]);
-
+  const client = useSocket();
 
   return (
-    <div className="chat">
-    <div className="chat__body">
-      { socket ? (
-        <div className="chat__message">
-          <Messages socket={socket} />
-          <div className="chat__footer">
-            <MessageInput socket={socket} />
-          </div>          
-        </div>
-      ) : (
-        <div>Not Connected</div>
-      )}
-    </div>    
-  </div>
+    <div className="app">
+      { client.user ? <Home client={client} /> : <Login logIn={client.logIn} />}
+    </div>
   )
 }
 
