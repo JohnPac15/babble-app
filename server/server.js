@@ -3,7 +3,10 @@ const { createServer } = require("http");
 const db = require('./config/connection');
 const { ApolloServer } = require('apollo-server-express');
 const {authMiddleware} = require('./utils/auth');
-const { Server } = require("socket.io");
+
+const chat = require('./utils/chat');
+const socketio = require('socket.io');
+const cors = require('cors');
 
 const { typeDefs, resolvers } = require('./schema');
 
@@ -25,16 +28,18 @@ const startServer = async () => {
 
 startServer();
 
-const httpServer = createServer(app);
-const io = new Server(httpServer);
-io.on("connection", function (socket) {
-  console.log("Made socket connection");
+const server = createServer();
+const io = socketio(server,{
+  cors: {
+    origin: '*',
+    methods: ['GET', 'POST']
+  }
 });
-
-httpServer.listen(3002);
+chat(io);
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(cors());
 
 db.once('open', () => {
   app.listen(PORT, () => {
