@@ -5,15 +5,16 @@
   border-radius: 20px;
 }
 
-.chat__body {
+.message-list {
   flex: 1;
+  height: 700px;
   padding: 30px;
   border-radius: 20px;
   overflow-y: scroll;
   background-color: #374151;
 }
 
-.chat__message {
+.message-container {
   position: relative;
   font-size: 16px;
   padding: 10px;
@@ -65,7 +66,7 @@
   border: none;
   margin: 0 1.2rem;
   outline-width: 0;
-  background-color: #4b5563;
+  background-color: var(--secondary-color);
   color: #fff;
 }
 
@@ -74,10 +75,22 @@
   background-color: #1f2937;
 }
 
+.chat__footer > form > button {
+  border: none;
+  background-color: #1f2937;
+}
+
+
+
+
+
+
+
+
+
 /* width */
 ::-webkit-scrollbar {
   width: 5px;
-
 }
 
 /* Track */
@@ -94,3 +107,7 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+
+
+

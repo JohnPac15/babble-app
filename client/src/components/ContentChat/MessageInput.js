@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {FiSend, FiSmile} from 'react-icons/fi'
 
+
 const NewMessage = ({socket}) => {
   const [value, setValue] = useState('');
   const submitForm = (e) => {
@@ -10,6 +11,8 @@ const NewMessage = ({socket}) => {
   };
 
   return (
+    <div className="chat__footer">
+      <FiSmile className="icon"/>
     <form onSubmit={submitForm}>
       <input
         autoFocus
@@ -19,7 +22,9 @@ const NewMessage = ({socket}) => {
           setValue(e.currentTarget.value);
         }}
       />
+       <button type="submit"><FiSend className="icon icon-style"/></button>
     </form>
+    </div>
   );
 };
 

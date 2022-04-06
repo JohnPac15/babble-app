@@ -1,9 +1,9 @@
-import React, {useState, useEffect} from 'react';
-import io from 'socket.io-client';
-import Messages from './Messages';
-import MessageInput from './MessageInput';
+import React, { useState, useEffect } from "react";
+import io from "socket.io-client";
+import Messages from "./Messages";
+import MessageInput from "./MessageInput";
 
-import './index.css'
+import "./index.css";
 
 function ContentChat() {
   const [socket, setSocket] = useState(null);
@@ -14,23 +14,24 @@ function ContentChat() {
     return () => newSocket.close();
   }, [setSocket]);
 
-
   return (
     <div className="chat">
-    <div className="chat__body">
-      { socket ? (
-        <div className="chat__message">
-          <Messages socket={socket} />
-          <div className="chat__footer">
+      <div className="chat__body">
+      {socket ? (
+        <>
+          <div>
+            <Messages socket={socket} />
+          </div>
+          <div>
             <MessageInput socket={socket} />
-          </div>          
-        </div>
+          </div>
+        </>
       ) : (
         <div>Not Connected</div>
       )}
-    </div>    
-  </div>
-  )
+        </div>
+    </div>
+  );
 }
 
-export default ContentChat
+export default ContentChat;
