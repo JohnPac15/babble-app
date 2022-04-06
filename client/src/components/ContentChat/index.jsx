@@ -3,7 +3,7 @@ import useSocket from '../../hooks/useSocket';
 import Home from '../../pages/Home';
 import Login from '../../pages/Login';
 
-import './index.css'
+import "./index.css";
 
 function ContentChat() {
   const client = useSocket();
@@ -15,4 +15,4 @@ function ContentChat() {
   )
 }
 
-export default ContentChat
+export default ContentChat;
