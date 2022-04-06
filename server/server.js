@@ -1,5 +1,5 @@
 const express = require('express');
-const { createServer } = require("http");
+const http = require("http");
 const db = require('./config/connection');
 const { ApolloServer } = require('apollo-server-express');
 const {authMiddleware} = require('./utils/auth');
@@ -11,6 +11,7 @@ const cors = require('cors');
 const { typeDefs, resolvers } = require('./schema');
 
 const PORT = process.env.PORT || 3001;
+const HTTP = process.env.HTTP || 3002;
 const app = express();
 
 const startServer = async () => {
@@ -24,12 +25,17 @@ const startServer = async () => {
   server.applyMiddleware({ app });
 
   console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
+
 };
 
 startServer();
 
-const server = createServer();
-const io = socketio(server,{
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(cors());
+
+const chatServer = http.createServer(app);
+var io = socketio(chatServer,{
   cors: {
     origin: '*',
     methods: ['GET', 'POST']
@@ -37,9 +43,7 @@ const io = socketio(server,{
 });
 chat(io);
 
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
-app.use(cors());
+chatServer.listen(HTTP, () => console.log(`Listening on port ${HTTP}`));
 
 db.once('open', () => {
   app.listen(PORT, () => {
