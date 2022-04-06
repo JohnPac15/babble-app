@@ -8,7 +8,7 @@ function SidebarChat() {
     <div>
       <div className="sidebar-chat">
         <div className="sidebar__header">
-          <BsPersonCircle className="header__icon" />
+          <img src="https://randomuser.me/api/portraits/women/11.jpg" alt="" />
           <div className="sidebar__headerRight">
             <BiMessageDetail className="headerRight__icons" />
             <BiDotsVerticalRounded className="headerRight__icons" />
@@ -23,7 +23,21 @@ function SidebarChat() {
           </div>
         </div>
 
-        <div className="sidebar__chats">{/* display friends */}</div>
+        <div className="sidebar__chats">
+          {/* display friends */}
+          <div className="chat__container">
+          <img src="https://randomuser.me/api/portraits/men/11.jpg" alt="" />
+            <p>Username</p>
+          </div>          
+          <div className="chat__container">
+          <img src="https://randomuser.me/api/portraits/women/12.jpg" alt="" />
+            <p>Username</p>
+          </div>          
+          <div className="chat__container">
+          <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="" />
+            <p>Username</p>
+          </div>          
+        </div>
       </div>
     </div>
   );
