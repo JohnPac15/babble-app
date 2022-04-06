@@ -1,5 +1,5 @@
 import React, {useState, useContext, useCallback, useEffect} from 'react';
-import {SocketContext} from './components/socket';
+import {SocketContext} from '../../components/socket';
 import {FiSend, FiSmile} from 'react-icons/fi'
 import './index.css'
 

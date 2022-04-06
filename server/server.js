@@ -31,7 +31,7 @@ io.on("connection", function (socket) {
   console.log("Made socket connection");
 });
 
-httpServer.listen(3000);
+httpServer.listen(3002);
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
