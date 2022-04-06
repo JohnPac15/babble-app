@@ -77,7 +77,7 @@
 
 .chat__footer > form > button {
   border: none;
-  background-color: #1f2937;
+  background-color: var(--background);
 }
 
 
@@ -100,12 +100,12 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #888;
+  background: var(--background);
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: var(--secondary-color);
 }
 
 
