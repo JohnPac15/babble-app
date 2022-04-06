@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 
-export const QUERY_POST = gql`
+export const QUERY_POSTS = gql`
 query Posts {
   posts {
     _id
@@ -11,6 +11,24 @@ query Posts {
     comments {
       username
       createdAt
+      commentBody
+    }
+  }
+}
+`;
+
+export const QUERY_POST = gql`
+query Post($id: ID!) {
+  post(_id: $id) {
+    _id
+    createdAt
+    username
+    postText
+    commentCount
+    comments {
+      _id
+      createdAt
+      username
       commentBody
     }
   }
@@ -48,13 +66,15 @@ query Me {
     friendCount
     friends {
       username
-      email
     }
     posts {
+      _id
+      username
       createdAt
-      commentCount
       postText
+      commentCount
       comments {
+        _id
         username
         createdAt
         commentBody

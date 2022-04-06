@@ -31,6 +31,7 @@ type User {
     users: [User]
     me: User
     posts :[Post]
+    post(_id: ID!):Post
   }
   type Mutation {
     login(email: String!, password: String!): Auth

@@ -6,6 +6,7 @@ const PostList = ({ posts, title }) => {
     return <h3>No posts Yet</h3>;
   }
 
+  // console.log(post._id, 'yoyo')
   return (
     <div>
       <h3>{title}</h3>

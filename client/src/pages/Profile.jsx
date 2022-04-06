@@ -1,7 +1,7 @@
 import React from 'react'
 import { Redirect,useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-import { QUERY_POST, QUERY_USER, QUERY_ME } from '../utils/queries'
+import { QUERY_POSTS, QUERY_USER, QUERY_ME } from '../utils/queries'
 import PostList from '../components/PostList';
 import FriendList from '../components/FriendList';
 import PostForm from '../components/PostForm';
@@ -46,7 +46,7 @@ function Profile(props) {
           <div className="col-12 mb-3 col-lg-8">
           <PostList
             posts={data.me.posts}
-            title={`${data.me.username}'s thoughts...`}
+            title={`${data.me.username}'s Posts...`}
           />
         </div>
         <div className="mb-3">{!userParam && <PostForm />}</div>

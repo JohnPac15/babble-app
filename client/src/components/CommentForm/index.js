@@ -1,40 +1,17 @@
 import React, { useState } from 'react';
 
 import { useMutation } from '@apollo/client';
-import { ADD_POST } from '../../utils/mutations';
-import { QUERY_POSTS, QUERY_ME } from '../../utils/queries';
+import { ADD_COMMENT } from '../../utils/mutations';
 
-const PostForm = () => {
-  const [postText, setText] = useState('');
+const CommentForm = ({ postId }) => {
+  const [commentBody, setBody] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
-
-  const [addPost, { error }] = useMutation(ADD_POST, {
-    update(cache, { data: { addPost } }) {
-      try {
-        // update thought array's cache
-        // could potentially not exist yet, so wrap in a try/catch
-        const { posts } = cache.readQuery({ query: QUERY_POSTS });
-        cache.writeQuery({
-          query: QUERY_POSTS,
-          data: { posts: [addPost, ...posts] },
-        });
-      } catch (e) {
-        console.error(e);
-      }
-
-      // update me object's cache
-      const { me } = cache.readQuery({ query: QUERY_ME });
-      cache.writeQuery({
-        query: QUERY_ME,
-        data: { me: { ...me, posts: [...me.posts, addPost] } },
-      });
-    },
-  });
+  const [addComment, { error }] = useMutation(ADD_COMMENT);
 
   // update state based on form input changes
   const handleChange = (event) => {
     if (event.target.value.length <= 280) {
-      setText(event.target.value);
+      setBody(event.target.value);
       setCharacterCount(event.target.value.length);
     }
   };
@@ -44,12 +21,12 @@ const PostForm = () => {
     event.preventDefault();
 
     try {
-      await addPost({
-        variables: { postText },
+      await addComment({
+        variables: { commentBody, postId },
       });
 
       // clear form value
-      setText('');
+      setBody('');
       setCharacterCount(0);
     } catch (e) {
       console.error(e);
@@ -69,17 +46,20 @@ const PostForm = () => {
         onSubmit={handleFormSubmit}
       >
         <textarea
-          placeholder="Post someything here"
-          value={postText}
+          placeholder="Leave a comment on this post......"
+          value={commentBody}
           className="form-input col-12 col-md-9"
           onChange={handleChange}
         ></textarea>
+
         <button className="btn col-12 col-md-3" type="submit">
           Submit
         </button>
       </form>
+
+      {error && <div>Something went wrong...</div>}
     </div>
   );
 };
 
-export default PostForm;
+export default CommentForm;
