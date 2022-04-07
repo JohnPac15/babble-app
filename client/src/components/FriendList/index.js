@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 
 const FriendList = ({ friendCount, username, friends }) => {
   if (!friends || !friends.length) {
@@ -13,7 +13,7 @@ const FriendList = ({ friendCount, username, friends }) => {
       </h5>
       {friends.map(friend => (
         <button className="btn w-100 display-block mb-2" key={friend._id}>
-          <Link to={`/profile/${friend.username}`}>{friend.username}</Link>
+          <NavLink to={`/profile/${friend.username}`}>{friend.username}</NavLink>
         </button>
       ))}
     </div>

@@ -1,20 +1,27 @@
 const { User, Posts } = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
 const { signToken } = require("../utils/auth");
-const Post = require("../models/Posts");
 
 const resolvers = {
   Query: {
     users: async () => {
       return User.find()
-      .populate("posts");
+      .populate("posts")
+      .populate('friends');
     },
     me: async (parent, args, context) => {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
-        .populate("posts");
+        .populate("posts")
+        .populate('friends');
         return userData;
       }
+    },
+    user: async (parent, { username }) => {
+      return User.findOne({ username })
+        .select('-__v -password')
+        .populate('friends')
+        .populate('posts');
     },
     posts: async (parents, { createdAt }, context) => {
       const posts = await Posts.find().sort({ createdAt: -1 });
@@ -22,7 +29,7 @@ const resolvers = {
       return posts;
     },
     post: async (parent, { _id }) => {
-      return Post.findOne({ _id });
+      return Posts.findOne({ _id });
     }
   },
   Mutation: {
@@ -85,7 +92,7 @@ const resolvers = {
         return deleteBook
         // console.log(deleteBook)
       }
-      // throw new AuthenticationError("You need tobe logged in!");
+      throw new AuthenticationError("You need tobe logged in!");
     },
     removeComment: async (parent, args, context) => {
       if(context.user){

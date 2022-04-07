@@ -30,6 +30,7 @@ type User {
   type Query {
     users: [User]
     me: User
+    user(username: String!): User
     posts :[Post]
     post(_id: ID!):Post
   }
