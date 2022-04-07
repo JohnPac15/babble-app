@@ -17,6 +17,8 @@
     "concurrently": "^5.1.0"
   },
   "dependencies": {
-    "@apollo/client": "^3.5.10"
+    "@apollo/client": "^3.5.10",
+    "emoji-mart": "^3.0.1",
+    "semantic-ui-react": "^2.1.2"
   }
 }

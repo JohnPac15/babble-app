@@ -18,7 +18,7 @@ const useSocket = () => {
     useEffect(() => {
         
         // get session and connect with session as auth
-        const sessionId = sessionStorage.getItem("sessionId");
+        const sessionId = localStorage.getItem('id_token');
         if (sessionId) {
             socket.auth = { sessionId };
             socket.connect();
