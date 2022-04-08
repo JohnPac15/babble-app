@@ -7,8 +7,9 @@ import PostList from '../components/PostList';
 import FriendList from '../components/FriendList';
 import PostForm from '../components/PostForm';
 import Auth from '../utils/auth';
-
-
+import ProfileSidebar from '../components/ProfileSidebar';
+import ContentChat from '../components/ContentChat';
+import SidebarChat from '../components/SidebarChat';
 
 function Profile(props) {
   const { username: userParam } = useParams();
@@ -47,35 +48,45 @@ function Profile(props) {
 
 
   return (
-    <div className="flex-row mb-3">
-        <h2 className="bg-dark text-secondary p-3 display-inline-block">
-          Viewing {userParam ? `${user.username}'s` : 'your'} profile.
+    <div className="profile">
+     
+        <h2 className="">
+           {` Welcome, ${user.username}`}
         </h2>
+
+
         {userParam && (
-          <button className="btn ml-auto" onClick={handleClick}>
+          <button className="" onClick={handleClick}>
             Add Friend
           </button>
         )}
       
-        
-        <div>
-        <div className="col-12 col-lg-3 mb-3">
-          <FriendList
-            username={user.username}
-            friendCount={user.friendCount}
-            friends={user.friends}
-          />
-        </div>
-        </div>
-        <div className="col-12 mb-3 col-lg-8">
-            <h2>POSTS</h2>
+      <div className="profile-container">
+
+        {/* Sidebar */}
+        <ProfileSidebar />
+
+
+        {/* Post's here */}
+        {/* <div>{!userParam && <PostForm />}</div>
+          
           <PostList
             posts={user.posts}
             title={`${user.username}'s Posts...`}
-          />
-        </div>
-        <h2>WRITE A NEW POST HERE</h2>
-        <div className="mb-3">{!userParam && <PostForm />}</div>
+          /> */}
+
+          {/* Friends List */}
+  
+          {/* <FriendList
+            username={user.username}
+            friendCount={user.friendCount}
+            friends={user.friends}
+          /> */}
+      </div>
+
+
+
+
       </div>
       
   )

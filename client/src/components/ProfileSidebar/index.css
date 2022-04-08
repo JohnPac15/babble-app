@@ -1,0 +1,31 @@
+.profileSidebar {
+    color: #fff;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+}
+
+.list-item {
+    display: flex;
+    align-items: center;
+ 
+    cursor: pointer;
+    padding: 20px;
+    transition: color 0.1s ease-out;
+    color: #fff;
+
+}
+
+.list-item:hover {
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    color: var(--primary-color);
+    
+}
+
+.list .icon {
+    margin-right: 10px;
+}
