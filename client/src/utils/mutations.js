@@ -1,36 +1,27 @@
 import { gql } from '@apollo/client';
 
 export const LOGIN_USER = gql`
-mutation Login($email: String!, $password: String!) {
-  login(email: $email, password: $password) {
-    token
-    user {
-      username
+  mutation login($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
+      token
+      user {
+        _id
+        username
+      }
     }
   }
-}
 `;
 
 export const ADD_USER = gql`
-mutation AddUser($username: String!, $email: String!, $password: String!) {
-  addUser(username: $username, email: $email, password: $password) {
-    token
-    user {
-      _id
-      username
-      email
-      friendCount
-      friends {
+  mutation addUser($username: String!, $email: String!, $password: String!) {
+    addUser(username: $username, email: $email, password: $password) {
+      token
+      user {
+        _id
         username
-      }
-      posts {
-        createdAt
-        postText
-        commentCount
       }
     }
   }
-}
 `;
 
 export const ADD_FRIEND = gql`
@@ -107,3 +98,4 @@ mutation RemoveComment($postId: ID!, $commentId: String!) {
   }
 }
 `;
+
