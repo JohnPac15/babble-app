@@ -1,0 +1,15 @@
+.comment-form {
+    margin: 10px auto;
+}
+.comment-form .form-input {
+    width: 80%;
+    padding: 10px;
+    border: none;
+    outline-width: 0;
+    font-size: 1rem;
+}
+
+.comment-form .btn {
+    border-radius: 0;
+    font-size: 1rem;
+}

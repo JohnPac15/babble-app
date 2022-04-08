@@ -22,7 +22,7 @@ const SinglePost = (props) => {
   }
 
   return (
-    <div>
+    <div className='singlePost-wrapper'>
       <div className="card mb-3">
         <p className="card-header">
           <span style={{ fontWeight: 700 }} className="text-light">
@@ -31,13 +31,13 @@ const SinglePost = (props) => {
           thought on {post.createdAt}
         </p>
         <div className="card-body">
-          <p>{post.postText}</p>
+          <p className='card-text'>{post.postText}</p>
         </div>
       </div>
       {post.commentCount > 0 && (
         <CommentList comments={post.comments} />
-      )}
-      {Auth.loggedIn() && <CommentForm postId={post._id} />}
+        )}
+        {Auth.loggedIn() && <CommentForm postId={post._id} />}
     </div>
   );
 };

@@ -20,17 +20,6 @@ function NavBar() {
           </NavLink>
 
           <ul className={click ? "nav-menu active" : "nav-menu"}>
-            <li className="nav-item">
-              <NavLink
-                exact
-                to="/"
-                activeClassName="active"
-                className="nav-links"
-                onClick={handleClick}
-              >
-                Home
-              </NavLink>
-            </li>
             {Auth.loggedIn() ? (
               <>
                 <li className="nav-item">
@@ -56,6 +45,39 @@ function NavBar() {
                   </NavLink>
                 </li>
                 <li className="nav-item">
+                  <NavLink
+                    exact
+                    to="/friends"
+                    activeClassName="active"
+                    className="nav-links"
+                    onClick={handleClick}
+                  >
+                    Connect
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink
+                    exact
+                    to="/lists"
+                    activeClassName="active"
+                    className="nav-links"
+                    onClick={handleClick}
+                  >
+                    Lists
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink
+                    exact
+                    to="/posts"
+                    activeClassName="active"
+                    className="nav-links"
+                    onClick={handleClick}
+                  >
+                    Posts
+                  </NavLink>
+                </li>
+                <li className="nav-item">
                   <Link exact className="nav-links" to="/" onClick={logout}>
                     Logout
                   </Link>
@@ -64,7 +86,23 @@ function NavBar() {
             ) : (
               <>
                 <li className="nav-item">
-                  <NavLink exact className="nav-links" activeClassName="active" to="/login">
+                  <NavLink
+                    exact
+                    to="/"
+                    activeClassName="active"
+                    className="nav-links"
+                    onClick={handleClick}
+                  >
+                    Home
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink
+                    exact
+                    className="nav-links"
+                    activeClassName="active"
+                    to="/login"
+                  >
                     Login
                   </NavLink>
                 </li>

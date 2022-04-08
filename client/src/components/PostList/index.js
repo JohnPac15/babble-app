@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './index.css'
 
 const PostList = ({ posts, title }) => {
   if (!posts.length) {
@@ -8,11 +9,11 @@ const PostList = ({ posts, title }) => {
 
   // console.log(post._id, 'yoyo')
   return (
-    <div>
-      <h3>{title}</h3>
+    <div className='card-container'>
+      {/* <h3>{title}</h3> */}
       {posts &&
         posts.map(post => (
-          <div key={post._id} className="card mb-3">
+          <div key={post._id} className="card">
             <p className="card-header">
               <Link
                 to={`/profile/${post.username}`}
@@ -21,12 +22,12 @@ const PostList = ({ posts, title }) => {
               >
                 {post.username}
               </Link>{' '}
-              thought on {post.createdAt}
+              Posted on {post.createdAt}
             </p>
             <div className="card-body">
               <Link to={`/post/${post._id}`}>
-                <p>{post.postText}</p>
-                <p className="mb-0">
+                <p className='card-text'>{post.postText}</p>
+                <p className="comments">
                   Comments: {post.commentCount} || Click to{' '}
                   {post.commentCount ? 'see' : 'start'} the discussion!
                 </p>

@@ -1,0 +1,14 @@
+.post-form .form-input {
+    width: 35rem;
+    padding: 10px;
+    border: none;
+    outline-width: 0;
+    font-size: 1rem;
+    margin-left: 20px;
+}
+
+.post-form .btn {
+    border-radius: 0;
+    font-size: 1rem;
+
+}
