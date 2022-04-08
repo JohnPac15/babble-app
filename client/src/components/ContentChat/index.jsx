@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-import PopupRoomInfo from './roomInfo';
 import 'emoji-mart/css/emoji-mart.css'
 import { Picker } from 'emoji-mart';
 
@@ -28,7 +27,6 @@ const ContentChat = ({ client: { user, logOut, users, chat, rooms, createRoom, u
 
     }, [chat, user.roomId]);
 
-
     // keyup for message input
     const handleKeyUp = (e, message) => {
         if (e.keyCode === 13) {
@@ -46,18 +44,15 @@ const ContentChat = ({ client: { user, logOut, users, chat, rooms, createRoom, u
         }
     }
 
-
     const handleMessageChange = (e) => {
         setMessage(e.target.value); 
         typing();
     }
 
-
     const addEmoji = e => {
         let emoji = e.native;
         setMessage(prevMessage => prevMessage + emoji);
     };
-
 
     // keyup for room input
     const handleKeyUpRoom = (e) => {
@@ -67,13 +62,11 @@ const ContentChat = ({ client: { user, logOut, users, chat, rooms, createRoom, u
         }
     }
 
-
     const handleAppClick = (e) => {
         if (showEmoji && !emojiSelector.current.contains(e.target)) {
             setShowEmoji(false); 
         }
     }
-
 
     const handleMessageSubmit = () => {
         sendMessage(message); 
@@ -119,13 +112,10 @@ const ContentChat = ({ client: { user, logOut, users, chat, rooms, createRoom, u
 
             </div>
 
-
             <div className="chat_area">
                 
-                <div className="chat_bg">
-                    
-                <PopupRoomInfo roomId={user.roomId} rooms={rooms} />
-
+                <div className="chat_bg">                   
+                
                     <div className="chat">
                         {
                             chat && chat[user.roomId]?.messages?.map((msg, idx) => {
@@ -182,11 +172,8 @@ const ContentChat = ({ client: { user, logOut, users, chat, rooms, createRoom, u
                         
                         <button className="send_message_btn" onClick={(e) => {handleMessageSubmit();}}>SEND</button>
                     </div>
-
                 </div>
-
             </div>
-
 
             <div className="right_sidebar">
                 
@@ -229,8 +216,6 @@ const ContentChat = ({ client: { user, logOut, users, chat, rooms, createRoom, u
                     </span>
                 </div>
             </div>
-
-
         </div>
     );
 

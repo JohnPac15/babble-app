@@ -6,10 +6,11 @@ import Login from '../pages/Login';
 const Chat = () => {
 
     const chat = useSocket();
+    console.log (chat);
 
     return (
         <div className="app">
-            { chat.username ? <ContentChat client={chat} /> : <Login logIn={chat.logIn} />}
+            { chat.user ? <ContentChat client={chat} /> : <Login logIn={chat.logIn} />}
         </div>
     );
 

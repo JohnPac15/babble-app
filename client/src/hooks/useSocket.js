@@ -18,13 +18,12 @@ const useSocket = () => {
     useEffect(() => {
         
         // get session and connect with session as auth
-        const sessionId = localStorage.getItem('id_token');
+        const sessionId = sessionStorage.getItem("sessionId");
         if (sessionId) {
             socket.auth = { sessionId };
             socket.connect();
             console.log("Trying to reconnect with sessionId");
         }
-
 
         socket.on("connect", () => {
             console.log("Connected to server successfully");
@@ -35,33 +34,27 @@ const useSocket = () => {
             socket.emit("setUpUser");
         });
 
-
         socket.on("session", ({ sessionId, userId }) => {
             socket.auth = { sessionId };
             sessionStorage.setItem("sessionId", sessionId);
             socket.userId = userId;
         });
 
-
         socket.on("user", (sUser) => {
             setUser(sUser);
         });
-
 
         socket.on("users", (sUsers) => {
             setUsers(sUsers);
         });
 
-
         socket.on("rooms", (sRooms) => {
             setRooms(sRooms);
         });
 
-
         socket.on("room", (roomId) => {
             setUser(prevUser =>  ({...prevUser, roomId: roomId}));
         });
-
 
         socket.on("chat", (message) => {
             setChat(prevchat => ({
@@ -74,25 +67,19 @@ const useSocket = () => {
             );
         });
 
-
         socket.on("typing", (username) => {
             setUserTyping(username);
         });
-
 
         socket.on("stoppedTyping", () => {
             setUserTyping(null);
         });
 
-
         return () => {
             console.log("Disconnected from server");
             socket.disconnect();
         }
-
     }, []);
-
- 
 
     const logIn = ({ username, avatar }) => {
         u = username;
@@ -101,7 +88,6 @@ const useSocket = () => {
         socket.connect();
     }
 
-
     const logOut = () => {
         setUser(null);
         sessionStorage.removeItem("sessionId");
@@ -109,17 +95,14 @@ const useSocket = () => {
         console.log("User logged out");
     }
 
-
     const sendMessage = (message) => {
         socket.emit("message", message);
     }
-
 
     const createRoom = (roomName) => {
         console.log("emit createRoom");
         socket.emit("createRoom", roomName);
     }
-
 
     const updateRoom = (roomId) => {
         
@@ -139,18 +122,15 @@ const useSocket = () => {
         );
     }
 
-
     const deleteRoom = (roomId) => {
         socket.emit("deleteRoom", roomId);
     }
-
 
     const typing = () => {
         socket.emit("typing");
         clearTimeout(typingTimer);
         setTypingTimer(null);
     }
-
 
     const stoppedTyping = () => {
         if (typingTimer == null) {
@@ -160,14 +140,12 @@ const useSocket = () => {
         }
     }
 
-
     const logStates = ({ showUser=false, showUsers=false, showRooms=false, showChat=false }) => {
         if (showUser) console.log(user);
         if (showUsers) console.log(users);
         if (showRooms) console.log(rooms);
         if (showChat) console.log(chat);
     }
-
 
     return { 
         socket, 
@@ -187,7 +165,6 @@ const useSocket = () => {
         userTyping,
         logStates 
     };
-
 }
 
 export default useSocket;
