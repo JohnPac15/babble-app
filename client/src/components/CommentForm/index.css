@@ -13,3 +13,16 @@
     border-radius: 0;
     font-size: 1rem;
 }
+
+@media screen and (max-width: 650px) {
+    .comment-form .form-input {
+      width: 60%;
+      font-size: 0.9rem;
+    }
+
+    .comment-form .btn {
+      font-size: 0.9rem;
+  
+  }
+  }
+  

@@ -46,7 +46,7 @@ const CommentForm = ({ postId }) => {
         onSubmit={handleFormSubmit}
       >
         <input
-          placeholder="Leave a comment on this post......"
+          placeholder="Leave a comment......"
           value={commentBody}
           className="form-input col-12 col-md-9"
           onChange={handleChange}

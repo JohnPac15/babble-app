@@ -17,6 +17,12 @@
 @media screen and (max-width: 600px) {
     .post-form .form-input {
       margin: 0;
+      font-size: 0.9rem;
     }
+
+    .post-form .btn {
+      font-size: 0.9rem;
+  
+  }
   }
   
