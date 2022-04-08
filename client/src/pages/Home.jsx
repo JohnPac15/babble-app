@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState }  from 'react'
+import UserList from '../components/UserList';
 
 
 function Home() {
@@ -6,6 +7,7 @@ function Home() {
   return (
     <div>
       Home
+      <UserList />
     </div>
   )
 }
