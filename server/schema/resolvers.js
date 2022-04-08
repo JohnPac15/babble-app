@@ -1,4 +1,4 @@
-const { User, Posts } = require("../models");
+const { User, Posts, ToDo } = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
 const { signToken } = require("../utils/auth");
 
@@ -30,7 +30,12 @@ const resolvers = {
     },
     post: async (parent, { _id }) => {
       return Posts.findOne({ _id });
-    }
+    },
+    todo: async (parents, { dueDate }, context) => {
+      const todo = await ToDo.find().sort({ dueDate: -1 });
+
+      return todo;
+    },
   },
   Mutation: {
     addUser: async (parent, args) => {
@@ -118,7 +123,34 @@ const resolvers = {
         return moreFriends
       }
       throw new AuthenticationError('You need to be logged in!');
-    }
+    },
+    addTodo: async (parent, args, context) => {
+      if (context.user) {
+        const todo = await ToDo.create({
+          ...args,
+          username: context.user.username,
+        });
+  
+        await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $push: { todo: todo._id } },
+          { new: true }
+        );
+  
+        return todo;
+      }
+      throw new AuthenticationError("You need tobe logged in!");
+    },
+    removeTodo: async (parent, args, context) => {
+      if (context.user) {
+        const deleteTodo = await ToDo.findByIdAndDelete(
+          {_id: args._id},
+          { new: true}
+        )
+        return deleteTodo
+      }
+      throw new AuthenticationError("You need tobe logged in!");
+    },
   },
 };
 

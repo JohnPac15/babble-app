@@ -23,6 +23,13 @@ type User {
     createdAt: String
     username: String
   }
+  type Todo {
+    _id: ID
+    todoText: String
+    dueDate: String
+    createdAt: String
+    username: String
+  }  
   type Auth {
     token: ID!
     user: User
@@ -33,6 +40,7 @@ type User {
     user(username: String!): User
     posts :[Post]
     post(_id: ID!):Post
+    todo: [ToDo]
   }
   type Mutation {
     login(email: String!, password: String!): Auth
@@ -42,6 +50,8 @@ type User {
     removePost( _id: ID!):Post
     removeComment(postId: ID!, commentId: String!): Post
     addFriend(friendId: ID!): User
+    addTodo(todoText: String!): ToDo
+    removeTodo( _id: ID!):ToDo
   }
   `;
 
