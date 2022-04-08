@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import io from "socket.io-client";
 import Messages from "./Messages";
 import MessageInput from "./MessageInput";
-
 import "./index.css";
 
 function ContentChat() {

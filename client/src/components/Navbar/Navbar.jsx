@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./navbar.css";
+import Auth from '../../utils/auth'
+
+
 function NavBar() {
+  const logout = event => {
+    event.preventDefault();
+    Auth.logout();
+  };
   const [click, setClick] = useState(false);
 
   const handleClick = () => setClick(!click);
@@ -48,15 +55,16 @@ function NavBar() {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink
-                exact
-                to="/login"
-                activeClassName="active"
-                className="nav-links"
-                onClick={handleClick}
-              >
-                Login
-              </NavLink>
+            {Auth.loggedIn() ? (
+              <>
+                <NavLink to="/profile"></NavLink>
+                <a className="nav-links" href="/" onClick={logout}>Logout</a>
+              </>
+            ) : (
+              <>
+                <NavLink className="nav-links" to="/login">Login</NavLink>
+              </>
+            )}
             </li>
             <li className="nav-item">
               <NavLink
