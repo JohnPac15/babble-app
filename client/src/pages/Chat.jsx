@@ -9,7 +9,7 @@ const Chat = () => {
 
     return (
         <div className="app">
-            
+            { client.user ? <ContentChat client={client} /> : <Login logIn={client.logIn} />}
         </div>
     );
 
