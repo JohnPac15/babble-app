@@ -154,6 +154,7 @@ body {
 
 .post-form {
   display: flex;
+
   padding: 10px;
   align-items: center;
   background-color: var(--secondary-color);
@@ -194,6 +195,10 @@ body {
   .home-container p{
     margin-right: 20px;
   }
+
+  .profile-container {
+    flex-direction: column;
+  }
   
 }
 
@@ -223,3 +228,11 @@ body {
 
 }
 
+@media screen and (max-width: 600px) {
+  .post-form .form-input {
+    margin: 0;
+  }
+  .post-form img {
+    display: none;
+  }
+}

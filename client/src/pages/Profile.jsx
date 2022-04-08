@@ -53,7 +53,7 @@ function Profile(props) {
 
       <div className="profile-container">
         {/* Post's here */}
-        <div className="post-wrapper">
+        <div >
           <h3 className="">{` Welcome, ${user.username}!`}</h3>
           <div className="post-form">
             <div>
