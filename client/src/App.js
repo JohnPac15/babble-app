@@ -51,7 +51,7 @@ function App() {
             </div>
           </div>
         </Router>
-      </div>
+        </div> 
     </ApolloProvider>
   );
 }

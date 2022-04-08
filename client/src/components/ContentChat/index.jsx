@@ -1,37 +1,36 @@
-import React from 'react'
-import {FiSend, FiSmile} from 'react-icons/fi'
-import './index.css'
+import React, { useState, useEffect } from "react";
+import io from "socket.io-client";
+import Messages from "./Messages";
+import MessageInput from "./MessageInput";
+import "./index.css";
+
 function ContentChat() {
+  const [socket, setSocket] = useState(null);
+
+  useEffect(() => {
+    const newSocket = io(`http://${window.location.hostname}:3002`);
+    setSocket(newSocket);
+    return () => newSocket.close();
+  }, [setSocket]);
+
   return (
     <div className="chat">
-    <div className="chat__body">
-      <p className="chat__message">
-        <span className="chat__name">User</span>
-        this is a message
-      </p>
-      <p className="chat__message chat__reciever">
-        <span className="chat__name">User</span>
-        this is a message
-      </p>
-      <p className="chat__message">
-        <span className="chat__name">User</span>
-        this is a message
-      </p>
-      <p className="chat__message chat__reciever">
-        <span className="chat__name">User</span>
-        this is a message
-      </p>
+      <div className="chat__body">
+      {socket ? (
+        <>
+          <div>
+            <Messages socket={socket} />
+          </div>
+          <div>
+            <MessageInput socket={socket} />
+          </div>
+        </>
+      ) : (
+        <div>Not Connected</div>
+      )}
+        </div>
     </div>
-
-    <div className="chat__footer">
-        <FiSmile className="icon"/>
-        <form>
-            <input type="text" placeholder="type a message"/>
-            <button type="submit"><FiSend className="icon icon-style"/></button>
-        </form>
-    </div>
-  </div>
-  )
+  );
 }
 
-export default ContentChat
+export default ContentChat;
