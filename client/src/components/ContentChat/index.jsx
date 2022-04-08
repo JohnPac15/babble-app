@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-//import PopupRoomInfo from './roomInfo';
+import PopupRoomInfo from './roomInfo';
 import 'emoji-mart/css/emoji-mart.css'
 import { Picker } from 'emoji-mart';
 
@@ -124,7 +124,7 @@ const ContentChat = ({ client: { user, logOut, users, chat, rooms, createRoom, u
                 
                 <div className="chat_bg">
                     
-                   
+                <PopupRoomInfo roomId={user.roomId} rooms={rooms} />
 
                     <div className="chat">
                         {

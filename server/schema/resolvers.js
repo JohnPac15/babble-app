@@ -1,26 +1,36 @@
 const { User, Posts } = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
 const { signToken } = require("../utils/auth");
-const Post = require("../models/Posts");
 
 const resolvers = {
   Query: {
     users: async () => {
       return User.find()
-      .populate("posts");
+      .populate("posts")
+      .populate('friends');
     },
     me: async (parent, args, context) => {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
-        .populate("posts");
+        .populate("posts")
+        .populate('friends');
         return userData;
       }
+    },
+    user: async (parent, { username }) => {
+      return User.findOne({ username })
+        .select('-__v -password')
+        .populate('friends')
+        .populate('posts');
     },
     posts: async (parents, { createdAt }, context) => {
       const posts = await Posts.find().sort({ createdAt: -1 });
 
       return posts;
     },
+    post: async (parent, { _id }) => {
+      return Posts.findOne({ _id });
+    }
   },
   Mutation: {
     addUser: async (parent, args) => {
@@ -75,18 +85,18 @@ const resolvers = {
     },
     removePost: async (parent, args, context) => {
       if (context.user) {
-        const deleteBook = await Post.findByIdAndDelete(
+        const deleteBook = await Posts.findByIdAndDelete(
           {_id: args._id},
           { new: true}
         )
         return deleteBook
         // console.log(deleteBook)
       }
-      // throw new AuthenticationError("You need tobe logged in!");
+      throw new AuthenticationError("You need tobe logged in!");
     },
     removeComment: async (parent, args, context) => {
       if(context.user){
-        const deleteComment = await Post.findOneAndUpdate(
+        const deleteComment = await Posts.findOneAndUpdate(
           { _id: args.postId },
           {$pull: {comments: {_id: args.commentId}}},
           {new: true}
@@ -95,8 +105,22 @@ const resolvers = {
         return deleteComment
       }
       throw new AuthenticationError("You need to be logged in!");
+    },
+    addFriend: async( parent, args, context) =>{
+      console.log(args)
+      if(context.user){
+        const moreFriends = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { friends: args.friendId } },
+          { new: true }
+        ).populate('friends');
+
+        return moreFriends
+      }
+      throw new AuthenticationError('You need to be logged in!');
     }
   },
 };
 
 module.exports = resolvers;
+

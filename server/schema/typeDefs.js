@@ -30,7 +30,9 @@ type User {
   type Query {
     users: [User]
     me: User
+    user(username: String!): User
     posts :[Post]
+    post(_id: ID!):Post
   }
   type Mutation {
     login(email: String!, password: String!): Auth
@@ -39,6 +41,7 @@ type User {
     addComment( postId: ID!, commentBody: String!): Post
     removePost( _id: ID!):Post
     removeComment(postId: ID!, commentId: String!): Post
+    addFriend(friendId: ID!): User
   }
   `;
 
