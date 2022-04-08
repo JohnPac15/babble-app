@@ -6,8 +6,10 @@ import Home from './pages/Home'
 import Chat from "./pages/Chat";
 import Profile from "./pages/Profile";
 import Signup from "./pages/Signup";
+import SinglePost from './pages/SinglePost'
 import { setContext } from '@apollo/client/link/context';
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
+
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -32,22 +34,25 @@ function App() {
 
   return (
     <ApolloProvider client={client}>
-    <div>
-      <Router>
-        <div>
-          <NavBar />
-          <div className="pages">
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/signup" component={Signup} />
-              <Route exact path="/profile" component={Profile} />
-              <Route exact path="/chat" component={Chat} />
-            </Switch>
+      <div>
+        <Router>
+          <div>
+            <NavBar />
+            <div className="pages">
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route exact path="/login" component={Login} />
+                <Route exact path="/signup" component={Signup} />
+                <Route exact path="/profile" component={Profile} />
+                <Route exact path="/profile/:username?" component={Profile} />
+                <Route exact path="/chat" component={Chat} />
+                <Route exact path="/post/:id" component={SinglePost} />
+
+              </Switch>
+            </div>
           </div>
+        </Router>
         </div> 
-      </Router>
-    </div>
     </ApolloProvider>
   );
 }

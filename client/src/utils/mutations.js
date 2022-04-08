@@ -98,4 +98,3 @@ mutation RemoveComment($postId: ID!, $commentId: String!) {
   }
 }
 `;
-
