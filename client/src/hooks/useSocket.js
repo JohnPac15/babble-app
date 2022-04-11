@@ -140,7 +140,7 @@ const useSocket = () => {
         }
     }
 
-    const logStates = ({ showUser=false, showUsers=false, showRooms=false, showChat=false }) => {
+    const logStates = ({ showUser=true, showUsers=false, showRooms=false, showChat=false }) => {
         if (showUser) console.log(user);
         if (showUsers) console.log(users);
         if (showRooms) console.log(rooms);
