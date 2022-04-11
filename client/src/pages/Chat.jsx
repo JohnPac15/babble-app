@@ -1,8 +1,8 @@
 import React from 'react';
 import useSocket from '../hooks/useSocket';
 import ContentChat from '../components/ContentChat';
-import Login from '../pages/Login';
-import Auth from '../utils/auth';
+import ChatCreate from '../utils/chatCreate';
+//import Auth from '../utils/auth';
 
 const Chat = () => {
 
@@ -11,11 +11,7 @@ const Chat = () => {
 
     return (
         <div className="app">
-            {Auth.loggedIn() ? (
-                <ContentChat client={chat} />                
-            ) : (
-                <Login />
-            )}
+            { chat.user ? <ContentChat client={chat} /> : <ChatCreate logIn={chat.logIn} />}               
         </div>
     );
 
