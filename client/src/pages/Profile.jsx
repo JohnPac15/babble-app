@@ -11,7 +11,6 @@ import Auth from "../utils/auth";
 function Profile(props) {
   const { username: userParam } = useParams();
   const [addFriend] = useMutation(ADD_FRIEND);
-  const [removeFriend] = useMutation(REMOVE_FRIEND)
   // const [ load, findContextUser] = useQuery(QUERY_USER)
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
     variables: { username: userParam },
@@ -40,18 +39,6 @@ function Profile(props) {
       await addFriend({
         variables: { friendId: user._id },
       });
-    } catch (e) {
-      console.error(e);
-    }
-  };
-  
-  const handleRemoveClick = async () => {
-    console.log(user._id,'click me')
-    try {
-      await removeFriend({
-        variables: {friendId: user._id} ,
-      });
-      return <Redirect to="/profile" />;
     } catch (e) {
       console.error(e);
     }
