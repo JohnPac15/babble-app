@@ -44,7 +44,7 @@ let rooms = [{
     name: "Global", 
     userId: 0,
     username: "None", 
-    avatar: "https://randomuser.me/api/portraits/women/11.jpg",
+    avatar: "https://semantic-ui.com/images/avatar2/small/patrick.png",
     members: [],
 }];
 
