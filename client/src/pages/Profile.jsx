@@ -69,8 +69,8 @@ function Profile(props) {
                 />
               )}
             </div>
-
             <div>{!userParam && <PostForm />}</div>
+
           </div>
           <div>
             <PostList

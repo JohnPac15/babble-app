@@ -34,10 +34,10 @@ const SinglePost = (props) => {
           <p className='card-text'>{post.postText}</p>
         </div>
       </div>
+      {Auth.loggedIn() && <CommentForm postId={post._id} />}
       {post.commentCount > 0 && (
         <CommentList comments={post.comments} />
         )}
-        {Auth.loggedIn() && <CommentForm postId={post._id} />}
     </div>
   );
 };

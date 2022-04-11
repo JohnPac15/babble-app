@@ -52,7 +52,7 @@ const CommentForm = ({ postId }) => {
           onChange={handleChange}
         />
 
-        <button className="btn col-12 col-md-3" type="submit">
+        <button className="btn" type="submit">
           Submit
         </button>
       </form>
