@@ -59,10 +59,10 @@ const SinglePost = (props) => {
           Delete Post
         </button>
         
+        {Auth.loggedIn() && <CommentForm postId={post._id} />}
         {post.commentCount > 0 && (
           <CommentList comments={post.comments} />
         )}
-        {Auth.loggedIn() && <CommentForm postId={post._id} />}
       </div>
     );
   }
