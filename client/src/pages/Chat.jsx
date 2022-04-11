@@ -1,15 +1,19 @@
-import React from 'react'
+import React from 'react';
+import useSocket from '../hooks/useSocket';
 import ContentChat from '../components/ContentChat';
-import SidebarChat from '../components/SidebarChat';
+import Login from '../pages/Login';
 
-function Chat() {
-  
-  return (
-    <div className="chat-wrapper">
-        <SidebarChat/>
-        <ContentChat/>
-    </div>
-  )
+const Chat = () => {
+
+    const chat = useSocket();
+    console.log (chat);
+
+    return (
+        <div className="app">
+            { chat.user ? <ContentChat client={chat} /> : <Login logIn={chat.logIn} />}
+        </div>
+    );
+
 }
 
 export default Chat
