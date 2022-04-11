@@ -39,9 +39,10 @@ type User {
     addUser(username: String!, email: String!, password: String!): Auth
     addPost(postText: String!): Post
     addComment( postId: ID!, commentBody: String!): Post
+    addFriend(friendId: ID!): User
+    deleteFriend(friendId: ID!): User
     removePost( _id: ID!):Post
     removeComment(postId: ID!, commentId: String!): Post
-    addFriend(friendId: ID!): User
   }
   `;
 

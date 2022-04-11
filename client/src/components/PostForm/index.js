@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { useMutation } from '@apollo/client';
-import { ADD_POST } from '../../utils/mutations';
+import { ADD_POST,REMOVE_POST } from '../../utils/mutations';
 import { QUERY_POSTS, QUERY_ME } from '../../utils/queries';
 
 const PostForm = () => {
@@ -55,7 +55,7 @@ const PostForm = () => {
       console.error(e);
     }
   };
-
+  
   return (
     <div>
       <p
