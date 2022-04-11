@@ -13,7 +13,7 @@ const { v4: uuidv4 } = require('uuid');
 const io = require('socket.io')(http, {
     cors: {
         origin: "http://localhost:3000"
-    }
+    }    
 });
 
 const startServer = async () => {
@@ -249,7 +249,7 @@ io.on('connection', (socket) => {
 
       io.sockets.emit("rooms", rooms);
 
-      user = { 
+      let user = { 
           userId: socket.userId, 
           username: socket.username, 
           avatar: socket.avatar, 

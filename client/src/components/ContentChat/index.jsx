@@ -25,7 +25,7 @@ const ContentChat = ({ client: { user, logOut, users, chat, rooms, createRoom, u
         
         scrollToBottom();
 
-    }, [chat, user.roomId]);
+    }, [chat, rooms]);
 
     // keyup for message input
     const handleKeyUp = (e, message) => {
@@ -82,7 +82,7 @@ const ContentChat = ({ client: { user, logOut, users, chat, rooms, createRoom, u
                 </div>
 
                 <div className="profile_info">
-                    <img src={user.avatar} className="avatar_profile" alt="" />
+                    
                     <span>{user.username}</span>
                     <p onClick={() => logOut()}>Logout</p>
                 </div>
@@ -95,7 +95,7 @@ const ContentChat = ({ client: { user, logOut, users, chat, rooms, createRoom, u
                                 if (u.userId !== user.userId) {
                                     return (
                                         <div className="user_card" key={u.userId}>
-                                            <img src={u.avatar} className="small_img" alt="" />
+                                            
                                             <span>{u.username}</span>
                                         </div>
                                     )
