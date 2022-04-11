@@ -43,16 +43,16 @@ const SinglePost = (props) => {
     )
   }else{
     return (
-      <div>
-        <div className="card mb-3">
+      <div className='singlePost-wrapper'>
+        <div className="card">
           <p className="card-header">
             <span style={{ fontWeight: 700 }} className="text-light">
               {post.username}
             </span>{' '}
-            thought on {post.createdAt}
+            post on {post.createdAt}
           </p>
           <div className="card-body">
-            <p>{post.postText}</p>
+            <p className='card-text'>{post.postText}</p>
           </div>
         </div>
         <button className="btn col-12 col-md-3" onClick={handleDeletePost}>
