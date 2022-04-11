@@ -43,40 +43,7 @@ function NavBar() {
                   >
                     Chat
                   </NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink
-                    exact
-                    to="/friends"
-                    activeClassName="active"
-                    className="nav-links"
-                    onClick={handleClick}
-                  >
-                    Connect
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink
-                    exact
-                    to="/lists"
-                    activeClassName="active"
-                    className="nav-links"
-                    onClick={handleClick}
-                  >
-                    Lists
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink
-                    exact
-                    to="/posts"
-                    activeClassName="active"
-                    className="nav-links"
-                    onClick={handleClick}
-                  >
-                    Posts
-                  </NavLink>
-                </li>
+                </li>         
                 <li className="nav-item">
                   <Link exact className="nav-links" to="/" onClick={logout}>
                     Logout

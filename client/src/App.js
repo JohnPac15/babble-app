@@ -7,9 +7,6 @@ import Chat from "./pages/Chat";
 import Profile from "./pages/Profile";
 import Signup from "./pages/Signup";
 import SinglePost from './pages/SinglePost'
-import Friends from './pages/Friends';
-import Lists from './pages/Lists';
-import Posts from './pages/Posts';
 import { setContext } from '@apollo/client/link/context';
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 
@@ -49,9 +46,6 @@ function App() {
                 <Route exact path="/profile" component={Profile} />
                 <Route exact path="/profile/:username?" component={Profile} />
                 <Route exact path="/chat" component={Chat} />
-                <Route exact path="/friends" component={Friends} />
-                <Route exact path="/lists" component={Lists} />
-                <Route exact path="/posts" component={Posts} />
                 <Route exact path="/post/:id" component={SinglePost} />
 
               </Switch>
