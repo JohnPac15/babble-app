@@ -7,7 +7,7 @@
 
 .message-list {
   flex: 1;
-  height: 700px;
+  height: 550px;
   padding: 30px;
   border-radius: 20px;
   overflow-y: scroll;
@@ -22,14 +22,14 @@
   border-radius: 10px;
   background-color: grey;
   margin-bottom: 50px;
-  color: #fff;
+  color: rgba(255, 255, 255, 0.894);
 }
 
 .chat__name {
   position: absolute;
   top: -25px;
   font-weight: 600;
-  color: #fff;
+  color: rgba(255, 255, 255, 0.894);
 }
 
 .chat__reciever {
@@ -67,7 +67,7 @@
   margin: 0 1.2rem;
   outline-width: 0;
   background-color: var(--secondary-color);
-  color: #fff;
+  color: rgba(255, 255, 255, 0.894);
 }
 
 .chat__footer > form > button {
