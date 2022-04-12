@@ -13,6 +13,7 @@ const resolvers = {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
         .populate("posts")
+        .polulate("todo")
         .populate('friends');
         return userData;
       }
@@ -21,7 +22,8 @@ const resolvers = {
       return User.findOne({ username })
         .select('-__v -password')
         .populate('friends')
-        .populate('posts');
+        .populate('posts')
+        .polulate("todo");
     },
     posts: async (parents, { createdAt }, context) => {
       const posts = await Posts.find().sort({ createdAt: -1 });
@@ -32,7 +34,7 @@ const resolvers = {
       return Posts.findOne({ _id });
     },
     todo: async (parents, { dueDate }, context) => {
-      const todo = await ToDo.find().sort({ dueDate: -1 });
+      const todo = await ToDo.find();
 
       return todo;
     },
@@ -124,7 +126,6 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-<<<<<<< HEAD
     addTodo: async (parent, args, context) => {
       if (context.user) {
         const todo = await ToDo.create({
@@ -152,21 +153,6 @@ const resolvers = {
       }
       throw new AuthenticationError("You need tobe logged in!");
     },
-=======
-    deleteFriend: async( parent, args, context) =>{
-      console.log(args,'hey')
-      if(context.user){
-        const lessFriends = await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $pull: { friends: args.friendId } },
-          { new: true }
-        ).populate('friends');
-
-        return lessFriends
-      }
-      throw new AuthenticationError('You need to be logged in!');
-    }
->>>>>>> develop
   },
 };
 

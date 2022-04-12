@@ -101,8 +101,14 @@ export const QUERY_ME = gql`
           username
           createdAt
           commentBody
-        }
+        }        
       }
+      todo {
+        _id
+        createdAt
+        todoText
+        dueDate
+      }  
     }
   }
 `;

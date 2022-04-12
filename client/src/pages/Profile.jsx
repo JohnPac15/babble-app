@@ -6,6 +6,7 @@ import { ADD_FRIEND } from "../utils/mutations";
 import PostList from "../components/PostList";
 import FriendList from "../components/FriendList";
 import PostForm from "../components/PostForm";
+import ToDo from "../components/ToDo";
 import Auth from "../utils/auth";
 
 function Profile(props) {
@@ -77,6 +78,12 @@ function Profile(props) {
             <PostList
               posts={user.posts}
               title={`${user.username}'s Posts...`}
+            />
+          </div>
+          <div>
+            <ToDo
+              todo={user.todo}
+              title={`${user.username}'s To Do...`}
             />
           </div>
         </div>

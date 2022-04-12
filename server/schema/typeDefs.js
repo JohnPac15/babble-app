@@ -16,6 +16,7 @@ type User {
     friendCount: Int
     posts: [Post]
     friends: [User]
+    todo: [ToDo]
   }
   type Comment {
     _id: ID
@@ -23,7 +24,7 @@ type User {
     createdAt: String
     username: String
   }
-  type Todo {
+  type ToDo {
     _id: ID
     todoText: String
     dueDate: String
@@ -49,14 +50,10 @@ type User {
     addComment( postId: ID!, commentBody: String!): Post
     addFriend(friendId: ID!): User
     deleteFriend(friendId: ID!): User
+    addTodo(todoText: String!): ToDo
+    removeTodo(_id: ID!): ToDo
     removePost( _id: ID!):Post
     removeComment(postId: ID!, commentId: String!): Post
-<<<<<<< HEAD
-    addFriend(friendId: ID!): User
-    addTodo(todoText: String!): ToDo
-    removeTodo( _id: ID!):ToDo
-=======
->>>>>>> develop
   }
   `;
 
