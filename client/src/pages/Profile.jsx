@@ -1,4 +1,6 @@
 import React from "react";
+import Calendar from "react-calendar";
+import 'react-calendar/dist/Calendar.css';
 import { Redirect, useParams } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
@@ -19,6 +21,10 @@ function Profile(props) {
   });
   const me = useQuery(QUERY_ME)
   const user = data?.me || data?.user || {};
+
+  const handleDateChange = date => {
+
+  }
 
   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
     return <Redirect to="/profile" />;
@@ -72,9 +78,16 @@ function Profile(props) {
                 />
               )}
             </div>
-
             <div>{!userParam && <PostForm />}</div>
             <div>{!userParam && <ToDoForm />}</div>
+          </div>
+          <div>
+              <Calendar onChange={handleDateChange}
+              value={new Date()} />
+              <ToDo
+              toDo={user.toDo}
+              title={`${user.username}'s To Do...`}
+            />
           </div>
           <div>
             <PostList
