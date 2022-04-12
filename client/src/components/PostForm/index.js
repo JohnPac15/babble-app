@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-
-import { useMutation } from '@apollo/client';
-import { ADD_POST } from '../../utils/mutations';
-import { QUERY_POSTS, QUERY_ME } from '../../utils/queries';
+import React, { useState } from "react";
+import "./index.css";
+import { useMutation } from "@apollo/client";
+import { ADD_POST } from "../../utils/mutations";
+import { QUERY_POSTS, QUERY_ME } from "../../utils/queries";
 
 const PostForm = () => {
-  const [postText, setText] = useState('');
+  const [postText, setText] = useState("");
   const [characterCount, setCharacterCount] = useState(0);
 
   const [addPost, { error }] = useMutation(ADD_POST, {
@@ -49,35 +49,33 @@ const PostForm = () => {
       });
 
       // clear form value
-      setText('');
+      setText("");
       setCharacterCount(0);
     } catch (e) {
       console.error(e);
     }
   };
-
+  
   return (
-    <div>
+    <div className="post-container">
       <p
-        className={`m-0 ${characterCount === 280 || error ? 'text-error' : ''}`}
+        className={`m-0 ${characterCount === 280 || error ? "text-error" : ""}`}
       >
-        Character Count: {characterCount}/280
         {error && <span className="ml-2">Something went wrong...</span>}
       </p>
-      <form
-        className="flex-row justify-center justify-space-between-md align-stretch"
-        onSubmit={handleFormSubmit}
-      >
-        <textarea
-          placeholder="Post someything here"
-          value={postText}
-          className="form-input col-12 col-md-9"
-          onChange={handleChange}
-        ></textarea>
-        <button className="btn col-12 col-md-3" type="submit">
-          Submit
-        </button>
-      </form>
+      <div className="wrapper">
+        <form className="post-form" onSubmit={handleFormSubmit}>
+          <input
+            placeholder="Post someything here"
+            value={postText}
+            className="form-input col-12 col-md-9"
+            onChange={handleChange}
+          />
+          <button className="btn" type="submit">
+            Post
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

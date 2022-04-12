@@ -1,0 +1,19 @@
+.comment-card{
+    background-color: rgba(255, 255, 255, 0.894);
+    color: var(--secondary-color);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.comment-text {
+    border-bottom: 1px solid #888;
+    padding: 30px 10px;
+}
+
+.comment-text:last-child {
+    border-bottom: 0;
+}
+
+.comments {
+    color: #14b8a6
+}
