@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import './index.css'
-import 'emoji-mart/css/emoji-mart.css'
+import "./index.css";
+import "emoji-mart/css/emoji-mart.css";
 import { Picker } from "emoji-mart";
 
 const ContentChat = ({
@@ -92,7 +92,9 @@ const ContentChat = ({
         </div>
 
         <div className="profile_info">
-          <p className="btn" onClick={() => logOut()}>Logout of Chat</p>
+          <button className="chat_btn" onClick={() => logOut()}>
+            Logout of Chat
+          </button>
           <img src={user.avatar} className="avatar_profile" alt="" />
           <span className="name">{user.username}</span>
         </div>
@@ -144,7 +146,7 @@ const ContentChat = ({
                       <img src={msg.avatar} className="small_img" alt="" />
                       <div className="message_box">
                         <div className="message">
-                          <span className="message_name">{msg.username}</span>
+                          <span className="message_name">{msg.username} </span>
                           <span className="message_text">{msg.content}</span>
                         </div>
                       </div>
@@ -178,7 +180,7 @@ const ContentChat = ({
 
             <i
               className="far fa-smile-wink"
-              style={{ marginRight: 8, color: "grey" }}
+              style={{ marginRight: 8, color: "#5eead4" }}
               onClick={() => setShowEmoji((prevState) => !prevState)}
             ></i>
 
@@ -206,7 +208,6 @@ const ContentChat = ({
       </div>
 
       <div className="right_sidebar">
-
         <div className="active_rooms_list">
           {rooms?.map((room) => (
             <div
@@ -217,25 +218,28 @@ const ContentChat = ({
               onClick={() => updateRoom(room.id)}
             >
               <div className="room_item_content">
-                <img src={room.avatar} className="small_img" alt="" />
+                {/* <img src={room.avatar} className="small_img" alt="" /> */}
                 <div className="roomInfo">
-                  <span>{room.name}</span>
-                  <span className="room_author">{room.username}</span>
+                  <span>{room.name} </span>
+                  {/* <span className="room_author">{room.username}</span> */}
+                  <span>
+                    {" "}
+                    {room.userId === user.userId && (
+                      <span
+                        onClick={() => deleteRoom(room.id)}
+                        style={{ margin: 3 }}
+                      >
+                        <i
+                          className="far fa-trash-alt"
+                          style={{ color: "red" }}
+                        />
+                      </span>
+                    )}
+                    {chat[room.id]?.unread > 0 && room.id !== user.roomId && (
+                      <div className="badge">{chat[room.id]?.unread}</div>
+                    )}
+                  </span>
                 </div>
-              </div>
-
-              <div className="room_item_controls">
-                {room.userId === user.userId && (
-                  <div
-                    onClick={() => deleteRoom(room.id)}
-                    style={{ margin: 3 }}
-                  >
-                    <i className="far fa-trash-alt" style={{ color: "grey" }} />
-                  </div>
-                )}
-                {chat[room.id]?.unread > 0 && room.id !== user.roomId && (
-                  <div className="badge">{chat[room.id]?.unread}</div>
-                )}
               </div>
             </div>
           ))}
@@ -251,7 +255,7 @@ const ContentChat = ({
             onChange={(e) => setRoomName(e.target.value)}
             onKeyUp={(e) => handleKeyUpRoom(e)}
           />
-          <span
+          <button
             className="room_add_icon_holder"
             onClick={() => {
               createRoom(roomName);
@@ -259,7 +263,7 @@ const ContentChat = ({
             }}
           >
             {/* <i class="plus icon"></i> */}+
-          </span>
+          </button>
         </div>
       </div>
     </div>
