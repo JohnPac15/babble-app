@@ -102,8 +102,8 @@ export const REMOVE_POST = gql`
 `;
 
 export const REMOVE_TODO = gql`
-  mutation RemoveToDo($id: ID!) {
-    removeToDo(_id: $id) {
+  mutation DeleteToDo($id: ID!) {
+    deleteToDo(_id: $id) {
       _id
       username
       toDoText

@@ -143,7 +143,7 @@ const resolvers = {
       }
       throw new AuthenticationError("You need tobe logged in!");
     },
-    removeToDo: async (parent, args, context) => {
+    deleteToDo: async (parent, args, context) => {
       if (context.user) {
         const deleteToDo = await ToDo.findByIdAndDelete(
           {_id: args._id},

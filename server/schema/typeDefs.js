@@ -50,7 +50,7 @@ type User {
     addFriend(friendId: ID!): User
     deleteFriend(friendId: ID!): User
     addToDo(toDoText: String!): ToDo
-    removeToDo(_id: ID!): ToDo
+    deleteToDo(_id: ID!): ToDo
     removePost( _id: ID!):Post
     removeComment(postId: ID!, commentId: String!): Post
   }
