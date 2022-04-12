@@ -3,7 +3,7 @@ const dateFormat = require('../utils/dateFormat');
 
 const todoSchema = new Schema (
   {
-    todoText: {
+    toDoText: {
       type: String,
       required: 'Can not leave this blank',
       minlength: 1,

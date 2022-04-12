@@ -13,7 +13,7 @@ const resolvers = {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
         .populate("posts")
-        .polulate("todo")
+        .polulate("toDo")
         .populate('friends');
         return userData;
       }
@@ -23,7 +23,7 @@ const resolvers = {
         .select('-__v -password')
         .populate('friends')
         .populate('posts')
-        .polulate("todo");
+        .polulate("toDo");
     },
     posts: async (parents, { createdAt }, context) => {
       const posts = await Posts.find().sort({ createdAt: -1 });
@@ -33,10 +33,10 @@ const resolvers = {
     post: async (parent, { _id }) => {
       return Posts.findOne({ _id });
     },
-    todo: async (parents, { dueDate }, context) => {
-      const todo = await ToDo.find();
+    toDo: async (parents, { dueDate }, context) => {
+      const toDo = await ToDo.find();
 
-      return todo;
+      return toDo;
     },
   },
   Mutation: {
@@ -126,30 +126,30 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    addTodo: async (parent, args, context) => {
+    addToDo: async (parent, args, context) => {
       if (context.user) {
-        const todo = await ToDo.create({
+        const toDo = await ToDo.create({
           ...args,
           username: context.user.username,
         });
   
         await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $push: { todo: todo._id } },
+          { $push: { toDo: toDo._id } },
           { new: true }
         );
   
-        return todo;
+        return toDo;
       }
       throw new AuthenticationError("You need tobe logged in!");
     },
-    removeTodo: async (parent, args, context) => {
+    removeToDo: async (parent, args, context) => {
       if (context.user) {
-        const deleteTodo = await ToDo.findByIdAndDelete(
+        const deleteToDo = await ToDo.findByIdAndDelete(
           {_id: args._id},
           { new: true}
         )
-        return deleteTodo
+        return deleteToDo
       }
       throw new AuthenticationError("You need tobe logged in!");
     },

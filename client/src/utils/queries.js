@@ -78,6 +78,12 @@ export const QUERY_USER = gql`
           commentBody
         }
       }
+      toDo {
+        _id
+        createdAt
+        toDoText
+        dueDate
+      }  
     }
   }
 `;
@@ -103,10 +109,10 @@ export const QUERY_ME = gql`
           commentBody
         }        
       }
-      todo {
+      toDo {
         _id
         createdAt
-        todoText
+        toDoText
         dueDate
       }  
     }

@@ -2,31 +2,31 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './index.css'
 
-const ToDo = ({ todo, title }) => {
-  console.log(todo)
-  if (!todo.length) {
+const ToDo = ({ toDo, title }) => {
+  console.log(toDo)
+  if (!toDo.length) {
     return <h3>No Tasks Yet!</h3>;
   }
 
   return (
     <div className='card-container'>
       {/* <h3>{title}</h3> */}
-      {todo &&
-        todo.map(todos => (
-          <div key={todos._id} className="card">
+      {toDo &&
+        toDo.map(toDos => (
+          <div key={toDos._id} className="card">
             <p className="card-header">
               <Link
-                to={`/profile/${todo.username}`}
+                to={`/profile/${toDo.username}`}
                 style={{ fontWeight: 700 }}
                 className="text-light"
               >
-                {todo.username}
+                {toDo.username}
               </Link>{' '}
-              Due on {todo.dueDate}
+              Due on {toDo.dueDate}
             </p>
             <div className="card-body">
-              <Link to={`/todo/${todo._id}`}>
-                <p className='card-text'>{todo.todoText}</p>
+              <Link to={`/toDo/${toDo._id}`}>
+                <p className='card-text'>{toDo.toDoText}</p>
               </Link>
             </div>
           </div>

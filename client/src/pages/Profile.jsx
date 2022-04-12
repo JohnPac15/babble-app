@@ -82,7 +82,7 @@ function Profile(props) {
           </div>
           <div>
             <ToDo
-              todo={user.todo}
+              toDo={user.toDo}
               title={`${user.username}'s To Do...`}
             />
           </div>
