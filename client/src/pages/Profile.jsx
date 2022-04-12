@@ -18,6 +18,7 @@ function Profile(props) {
   });
   const me = useQuery(QUERY_ME)
   const user = data?.me || data?.user || {};
+  console.log(user)
 
   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
     return <Redirect to="/profile" />;

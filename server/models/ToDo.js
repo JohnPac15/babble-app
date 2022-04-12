@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
-const todoSchema = new Schema (
+const toDoSchema = new Schema (
   {
     toDoText: {
       type: String,
@@ -11,7 +11,6 @@ const todoSchema = new Schema (
     },
     dueDate: {
         type: Date,
-        default: Date.now,
         get: timestamp => dateFormat(timestamp)
       },
     createdAt: {
@@ -31,6 +30,6 @@ const todoSchema = new Schema (
   }
 );
 
-const ToDo = model('ToDo', todoSchema);
+const ToDo = model('ToDo', toDoSchema);
 
 module.exports = ToDo;

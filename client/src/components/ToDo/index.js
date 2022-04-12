@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import './index.css'
 
 const ToDo = ({ toDo, title }) => {
-  console.log(toDo)
   if (!toDo.length) {
     return <h3>No Tasks Yet!</h3>;
   }

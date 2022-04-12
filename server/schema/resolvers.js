@@ -13,7 +13,7 @@ const resolvers = {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
         .populate("posts")
-        .polulate("toDo")
+        .populate("toDo")
         .populate('friends');
         return userData;
       }
@@ -23,7 +23,7 @@ const resolvers = {
         .select('-__v -password')
         .populate('friends')
         .populate('posts')
-        .polulate("toDo");
+        .populate("toDo")
     },
     posts: async (parents, { createdAt }, context) => {
       const posts = await Posts.find().sort({ createdAt: -1 });
@@ -128,7 +128,7 @@ const resolvers = {
     },
     addToDo: async (parent, args, context) => {
       if (context.user) {
-        const toDo = await ToDo.create({
+        const addToDo = await ToDo.create({
           ...args,
           username: context.user.username,
         });
@@ -139,7 +139,7 @@ const resolvers = {
           { new: true }
         );
   
-        return toDo;
+        return addToDo;
       }
       throw new AuthenticationError("You need tobe logged in!");
     },

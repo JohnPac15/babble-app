@@ -9,6 +9,13 @@ type Post {
   commentCount: Int
   comments: [Comment]
 }
+type ToDo {
+  _id: ID
+  toDoText: String
+  dueDate: String
+  createdAt: String
+  username: String
+}  
 type User {
     _id: ID
     username: String
@@ -24,13 +31,6 @@ type User {
     createdAt: String
     username: String
   }
-  type ToDo {
-    _id: ID
-    todoText: String
-    dueDate: String
-    createdAt: String
-    username: String
-  }  
   type Auth {
     token: ID!
     user: User

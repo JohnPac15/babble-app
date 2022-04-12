@@ -35,6 +35,18 @@ export const QUERY_POST = gql`
   }
 `;
 
+export const QUERY_TODO = gql`
+  query ToDo {
+    toDo {
+      _id
+      username
+      createdAt
+      toDoText
+      dueDate
+    }
+  }
+`;
+
 export const QUERY_USERS = gql`
   query Users {
     users {
@@ -80,6 +92,7 @@ export const QUERY_USER = gql`
       }
       toDo {
         _id
+        username
         createdAt
         toDoText
         dueDate
@@ -111,6 +124,7 @@ export const QUERY_ME = gql`
       }
       toDo {
         _id
+        username
         createdAt
         toDoText
         dueDate
