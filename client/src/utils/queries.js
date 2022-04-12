@@ -42,7 +42,6 @@ export const QUERY_TODO = gql`
       username
       createdAt
       toDoText
-      dueDate
     }
   }
 `;
@@ -95,7 +94,6 @@ export const QUERY_USER = gql`
         username
         createdAt
         toDoText
-        dueDate
       }  
     }
   }
@@ -127,7 +125,6 @@ export const QUERY_ME = gql`
         username
         createdAt
         toDoText
-        dueDate
       }  
     }
   }

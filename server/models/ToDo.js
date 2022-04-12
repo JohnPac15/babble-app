@@ -9,10 +9,6 @@ const toDoSchema = new Schema (
       minlength: 1,
       maxlength: 280
     },
-    dueDate: {
-        type: Date,
-        get: timestamp => dateFormat(timestamp)
-      },
     createdAt: {
       type: Date,
       default: Date.now,

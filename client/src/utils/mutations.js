@@ -62,6 +62,16 @@ export const ADD_POST = gql`
     }
   }
 `;
+export const ADD_TODO = gql`
+  mutation AddToDo($toDoText: String!) {
+    addToDo(toDoText: $toDoText) {
+      _id
+      username
+      toDoText
+    }
+  }
+`;
+
 export const ADD_COMMENT = gql`
   mutation AddComment($postId: ID!, $commentBody: String!) {
     addComment(postId: $postId, commentBody: $commentBody) {
@@ -87,6 +97,17 @@ export const REMOVE_POST = gql`
       createdAt
       postText
       commentCount
+    }
+  }
+`;
+
+export const REMOVE_TODO = gql`
+  mutation RemoveToDo($id: ID!) {
+    removeToDo(_id: $id) {
+      _id
+      username
+      toDoText
+      createdAt
     }
   }
 `;

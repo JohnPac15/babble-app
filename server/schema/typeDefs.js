@@ -12,7 +12,6 @@ type Post {
 type ToDo {
   _id: ID
   toDoText: String
-  dueDate: String
   createdAt: String
   username: String
 }  
@@ -50,7 +49,7 @@ type User {
     addComment( postId: ID!, commentBody: String!): Post
     addFriend(friendId: ID!): User
     deleteFriend(friendId: ID!): User
-    addToDo(todoText: String!): ToDo
+    addToDo(toDoText: String!): ToDo
     removeToDo(_id: ID!): ToDo
     removePost( _id: ID!):Post
     removeComment(postId: ID!, commentId: String!): Post
