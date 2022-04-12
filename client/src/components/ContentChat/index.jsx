@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-
+import './index.css'
 import 'emoji-mart/css/emoji-mart.css'
 import { Picker } from "emoji-mart";
 
@@ -88,13 +88,13 @@ const ContentChat = ({
     <div className="chat_app" onClick={(e) => handleAppClick(e)}>
       <div className="left_sidebar">
         <div className="logo_text">
-          <span>Babble</span> <span className="colored">Chat</span>
+          {/* <span>Chit</span> <span className="colored">Chat</span> */}
         </div>
 
         <div className="profile_info">
+          <p className="btn" onClick={() => logOut()}>Logout of Chat</p>
           <img src={user.avatar} className="avatar_profile" alt="" />
-          <span>{user.username}</span>
-          <p onClick={() => logOut()}>Logout</p>
+          <span className="name">{user.username}</span>
         </div>
 
         <span style={{ alignSelf: "flex-start", fontWeight: "600" }}>
@@ -206,9 +206,7 @@ const ContentChat = ({
       </div>
 
       <div className="right_sidebar">
-        <span style={{ alignSelf: "flex-start", fontWeight: "600" }}>
-          Rooms
-        </span>
+
         <div className="active_rooms_list">
           {rooms?.map((room) => (
             <div
@@ -242,7 +240,9 @@ const ContentChat = ({
             </div>
           ))}
         </div>
-
+        {/* <span className="text-center" style={{ alignSelf: "flex-start", fontWeight: "600" }}>
+          Rooms
+        </span> */}
         <div className="room_input">
           <input
             type="text"
