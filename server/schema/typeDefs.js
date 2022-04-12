@@ -9,6 +9,12 @@ type Post {
   commentCount: Int
   comments: [Comment]
 }
+type ToDo {
+  _id: ID
+  toDoText: String
+  createdAt: String
+  username: String
+}  
 type User {
     _id: ID
     username: String
@@ -16,6 +22,7 @@ type User {
     friendCount: Int
     posts: [Post]
     friends: [User]
+    toDo: [ToDo]
   }
   type Comment {
     _id: ID
@@ -33,6 +40,7 @@ type User {
     user(username: String!): User
     posts :[Post]
     post(_id: ID!):Post
+    toDo: [ToDo]
   }
   type Mutation {
     login(email: String!, password: String!): Auth
@@ -41,6 +49,8 @@ type User {
     addComment( postId: ID!, commentBody: String!): Post
     addFriend(friendId: ID!): User
     deleteFriend(friendId: ID!): User
+    addToDo(toDoText: String!): ToDo
+    removeToDo(_id: ID!): ToDo
     removePost( _id: ID!):Post
     removeComment(postId: ID!, commentId: String!): Post
   }

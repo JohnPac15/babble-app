@@ -1,4 +1,4 @@
-const { User, Posts } = require("../models");
+const { User, Posts, ToDo } = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
 const { signToken } = require("../utils/auth");
 
@@ -13,6 +13,7 @@ const resolvers = {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
         .populate("posts")
+        .populate("toDo")
         .populate('friends');
         return userData;
       }
@@ -21,7 +22,8 @@ const resolvers = {
       return User.findOne({ username })
         .select('-__v -password')
         .populate('friends')
-        .populate('posts');
+        .populate('posts')
+        .populate("toDo")
     },
     posts: async (parents, { createdAt }, context) => {
       const posts = await Posts.find().sort({ createdAt: -1 });
@@ -30,7 +32,12 @@ const resolvers = {
     },
     post: async (parent, { _id }) => {
       return Posts.findOne({ _id });
-    }
+    },
+    toDo: async (parents, { dueDate }, context) => {
+      const toDo = await ToDo.find();
+
+      return toDo;
+    },
   },
   Mutation: {
     addUser: async (parent, args) => {
@@ -119,19 +126,33 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    deleteFriend: async( parent, args, context) =>{
-      console.log(args,'hey')
-      if(context.user){
-        const lessFriends = await User.findOneAndUpdate(
+    addToDo: async (parent, args, context) => {
+      if (context.user) {
+        const addToDo = await ToDo.create({
+          ...args,
+          username: context.user.username,
+        });
+  
+        await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $pull: { friends: args.friendId } },
+          { $push: { toDo: addToDo._id } },
           { new: true }
-        ).populate('friends');
-
-        return lessFriends
+        );
+  
+        return addToDo;
       }
-      throw new AuthenticationError('You need to be logged in!');
-    }
+      throw new AuthenticationError("You need tobe logged in!");
+    },
+    removeToDo: async (parent, args, context) => {
+      if (context.user) {
+        const deleteToDo = await ToDo.findByIdAndDelete(
+          {_id: args._id},
+          { new: true}
+        )
+        return deleteToDo
+      }
+      throw new AuthenticationError("You need tobe logged in!");
+    },
   },
 };
 

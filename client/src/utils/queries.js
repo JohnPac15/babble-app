@@ -35,6 +35,17 @@ export const QUERY_POST = gql`
   }
 `;
 
+export const QUERY_TODO = gql`
+  query ToDo {
+    toDo {
+      _id
+      username
+      createdAt
+      toDoText
+    }
+  }
+`;
+
 export const QUERY_USERS = gql`
   query Users {
     users {
@@ -78,6 +89,12 @@ export const QUERY_USER = gql`
           commentBody
         }
       }
+      toDo {
+        _id
+        username
+        createdAt
+        toDoText
+      }  
     }
   }
 `;
@@ -101,8 +118,14 @@ export const QUERY_ME = gql`
           username
           createdAt
           commentBody
-        }
+        }        
       }
+      toDo {
+        _id
+        username
+        createdAt
+        toDoText
+      }  
     }
   }
 `;

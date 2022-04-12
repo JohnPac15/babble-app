@@ -2,10 +2,12 @@ import React from "react";
 import { Redirect, useParams } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
-import { ADD_FRIEND } from "../utils/mutations";
+import { ADD_FRIEND, REMOVE_TODO } from "../utils/mutations";
 import PostList from "../components/PostList";
 import FriendList from "../components/FriendList";
 import PostForm from "../components/PostForm";
+import ToDo from "../components/ToDo";
+import ToDoForm from "../components/ToDoForm";
 import Auth from "../utils/auth";
 
 function Profile(props) {
@@ -72,11 +74,18 @@ function Profile(props) {
             </div>
 
             <div>{!userParam && <PostForm />}</div>
+            <div>{!userParam && <ToDoForm />}</div>
           </div>
           <div>
             <PostList
               posts={user.posts}
               title={`${user.username}'s Posts...`}
+            />
+          </div>
+          <div>
+            <ToDo
+              toDo={user.toDo}
+              title={`${user.username}'s To Do...`}
             />
           </div>
         </div>
