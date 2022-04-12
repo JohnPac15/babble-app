@@ -10,7 +10,7 @@ const PostList = ({ posts, title }) => {
   // console.log(post._id, 'yoyo')
   return (
     <div className='card-container'>
-      {/* <h3>{title}</h3> */}
+      <h3>Posts</h3>
       {posts &&
         posts.map(post => (
           <div key={post._id} className="card">
