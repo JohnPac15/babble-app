@@ -95,12 +95,6 @@ function Profile(props) {
               title={`${user.username}'s Posts...`}
             />
           </div>
-          <div>
-            <ToDo
-              toDo={user.toDo}
-              title={`${user.username}'s To Do...`}
-            />
-          </div>
         </div>
 
         {/* Friends List */}
