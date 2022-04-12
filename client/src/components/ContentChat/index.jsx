@@ -30,6 +30,10 @@ const ContentChat = ({
     chatBottomRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const [click, setClick] = useState(false);
+
+  const handleClick = () => setClick(!click);
+
   useEffect(() => {
     scrollToBottom();
   }, []);
@@ -86,6 +90,9 @@ const ContentChat = ({
 
   return (
     <div className="chat_app" onClick={(e) => handleAppClick(e)}>
+       <div className="sidebar-icons" onClick={handleClick}>
+        <i className={click ? "fas fa-times" : "fa fa-arrow-right"}></i>
+      </div>
       <div className="left_sidebar">
         <div className="logo_text">
           {/* <span>Chit</span> <span className="colored">Chat</span> */}
@@ -93,7 +100,7 @@ const ContentChat = ({
 
         <div className="profile_info">
           <button className="chat_btn" onClick={() => logOut()}>
-            Logout of Chat
+            Logout 
           </button>
           <img src={user.avatar} className="avatar_profile" alt="" />
           <span className="name">{user.username}</span>
@@ -207,7 +214,7 @@ const ContentChat = ({
         </div>
       </div>
 
-      <div className="right_sidebar">
+      <div className={click ? "sidebar-chat active" : "right_sidebar"}>
         <div className="active_rooms_list">
           {rooms?.map((room) => (
             <div
