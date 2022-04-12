@@ -88,7 +88,7 @@ const ContentChat = ({
     <div className="chat_app" onClick={(e) => handleAppClick(e)}>
       <div className="left_sidebar">
         <div className="logo_text">
-          <span>Chit</span> <span className="colored">Chat</span>
+          <span>Babble</span> <span className="colored">Chat</span>
         </div>
 
         <div className="profile_info">

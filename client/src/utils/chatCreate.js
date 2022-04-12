@@ -11,7 +11,7 @@ const avatars = [
 
 function ChatCreate({ logIn }) {
 
-    const [username, setUsername] = useState("");
+    var [username, setUsername] = useState("");
     const [avatar, setAvatar] = useState("https://semantic-ui.com/images/avatar2/small/patrick.png");
 
     return (
