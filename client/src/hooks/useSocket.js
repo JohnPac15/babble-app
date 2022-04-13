@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import io from 'socket.io-client';
 
-const socket = io(`http://${window.location.hostname}`);
+const socket = io(`https://${window.location.hostname}`);
 
 const useSocket = () => {
 
