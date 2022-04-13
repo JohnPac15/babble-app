@@ -7,6 +7,7 @@ const { typeDefs, resolvers } = require('./schema');
 
 const PORT = process.env.PORT || 3001;
 const PORT2 = process.env.PORT2 || 3000;
+const PORT3 = process.env.PORT3 || 4000;
 const app = express();
 
 const http = require('http').createServer(app);
@@ -47,8 +48,8 @@ if (process.env.NODE_ENV === 'production') {
     });
   }
 
-  app.listen(PORT2, () => {
-    console.log(`Connected to port ${PORT2}`);
+  http.listen(PORT3, () => {
+    console.log(`Connected to port ${PORT3}`);
   });
   
 // global server states
