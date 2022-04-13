@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import io from 'socket.io-client';
 
-const socket = io(`https://nameless-ocean-04231.herokuapp.com:4000`, { autoConnect: false });
+const socket = io(`https://${window.location.hostname}:4000`, { autoConnect: false });
 
 const useSocket = () => {
 
