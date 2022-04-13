@@ -35,9 +35,20 @@ export const QUERY_POST = gql`
   }
 `;
 
+export const QUERY_TODOS = gql`
+query ToDos  {
+  toDos {
+      _id
+      username
+      createdAt
+      toDoText
+    }
+  }
+`;
+
 export const QUERY_TODO = gql`
-  query ToDo {
-    toDo {
+  query ToDo ($id: ID!) {
+    toDo (_id: $id) {
       _id
       username
       createdAt

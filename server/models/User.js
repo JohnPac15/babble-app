@@ -32,7 +32,7 @@ const userSchema = new Schema(
         ref: 'User'
       }
     ],
-    toDo: [
+    toDos: [
       {
         type: Schema.Types.ObjectId,
         ref: 'ToDo'

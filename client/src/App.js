@@ -7,6 +7,7 @@ import Chat from "./pages/Chat";
 import Profile from "./pages/Profile";
 import Signup from "./pages/Signup";
 import SinglePost from './pages/SinglePost'
+import SingleToDo from './pages/SingleToDo'
 import { setContext } from '@apollo/client/link/context';
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 
@@ -47,7 +48,7 @@ function App() {
                 <Route exact path="/profile/:username?" component={Profile} />
                 <Route exact path="/chat" component={Chat} />
                 <Route exact path="/post/:id" component={SinglePost} />
-
+                <Route exact path="/toDo/:id" component={SingleToDo} />
               </Switch>
             </div>
           </div>

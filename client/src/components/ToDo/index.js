@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import './index.css'
 
 const ToDo = ({ toDo, title }) => {
+
+
   if (!toDo.length) {
     return <h3>No Tasks Yet!</h3>;
   }
@@ -14,19 +16,11 @@ const ToDo = ({ toDo, title }) => {
         toDo.map(toDos => (
           <div key={toDos._id} className="card">
             <p className="card-header">
-            <Link
-                to={`/profile/${toDos.username}`}
-                style={{ fontWeight: 700 }}
-                className="text-light"
-              >
-                {toDos.username}
-            </Link>{' '}
               Created on: {toDos.createdAt}
             </p>
             <div className="card-body">
               <Link to={`/toDo/${toDos._id}`}>
-                <p className='card-text'>{toDos.toDoText}</p>
-                <button variant="outline-danger" >✕</button>
+                <p className='card-text'>{toDos.toDoText}</p>                
               </Link>
             </div>
           </div>

@@ -22,7 +22,7 @@ type User {
     friendCount: Int
     posts: [Post]
     friends: [User]
-    toDo: [ToDo]
+    toDos: [ToDo]
   }
   type Comment {
     _id: ID
@@ -40,7 +40,8 @@ type User {
     user(username: String!): User
     posts :[Post]
     post(_id: ID!):Post
-    toDo: [ToDo]
+    toDos: [ToDo]
+    toDo(_id: ID!): ToDo
   }
   type Mutation {
     login(email: String!, password: String!): Auth
