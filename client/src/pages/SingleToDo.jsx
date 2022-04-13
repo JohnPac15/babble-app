@@ -25,7 +25,7 @@ const SingleToDo = (props) => {
     
     try{
       removeToDo({variables: { id: toDo._id }});
-      <Redirect to="/profile" />
+      return <Redirect to="/profile" />
     }catch(e){
       console.error(e)
     }
