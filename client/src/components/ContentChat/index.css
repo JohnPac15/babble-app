@@ -1,0 +1,234 @@
+.app {
+  display: flex;
+  width: 100%;
+  height: 90vh;
+}
+
+.chat_app {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  padding: 30px;
+  color: #fff;
+}
+
+.chat_btn {
+  padding: 5px 10px;
+  margin-bottom: 20px;
+  border: none;
+  background-color: var(--primary-color);
+  cursor: pointer;
+}
+
+.left_sidebar {
+  background-color: var(--secondary-color);
+  flex: 0.2;
+  border-right: 6px solid var(--background);
+}
+
+.right_sidebar {
+  background-color: var(--secondary-color);
+  flex: 0.2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 30px;
+  border-left: 1px solid var(--background);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.right_sidebar .small_img {
+  border-radius: 50%;
+  width: 5rem;
+}
+
+.chat_area {
+  flex: 0.6;
+  background-color: var(--secondary-color);
+  overflow-y: scroll;
+}
+
+.colored,
+.name {
+  color: var(--primary-color);
+}
+
+.profile_info .btn {
+  color: var(--secondary-color);
+  font-size: 0.9rem;
+}
+
+.avatar_profile {
+  border-radius: 50%;
+  width: 6rem;
+}
+
+.profile_info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+.message_holder {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+.message_holder img {
+  width: 2.5rem;
+  border-radius: 50%;
+}
+
+.chat_bg {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+.message_text {
+  font-size: 10px;
+}
+
+.chat_input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.chat_input input {
+  width: 80%;
+  padding: 5px 10px;
+  border: none;
+  outline-width: 0;
+}
+
+.send_message_btn {
+  padding: 5px 10px;
+  border: none;
+  background-color: var(--primary-color);
+}
+
+.room_input {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.room_input input {
+  padding: 3px 5px;
+  border: none;
+  outline-width: 0;
+}
+
+.room_add_icon_holder {
+  padding: 0 5px;
+  font-size: 1.2rem;
+  background-color: #fff;
+  border: none;
+}
+
+.roomInfo {
+  margin: 10px 0;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--background);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-color);
+}
+
+.sidebar-icons {
+  display: none;
+}
+
+@media screen and (max-width: 960px) {
+  .right_sidebar {
+    display: none;
+  }
+
+  .sidebar-chat {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 100px;
+    left: -110%;
+    opacity: 1;
+    transition: all 0.5s ease;
+  }
+
+  .sidebar-chat.active {
+    background: var(--background);
+    left: 0px;
+    opacity: 1;
+    transition: all 0.5s ease-in;
+    z-index: 1;
+  }
+
+  .sidebar-icons {
+    display: block;
+    position: absolute;
+    top: 75px;
+    left: 20px;
+    cursor: pointer;
+    font-size: 1.2rem;
+  }
+
+  .left_sidebar {
+    flex: 0.2;
+    padding: 10px;
+  }
+
+  .chat_area {
+    flex: 0.8;
+  }
+
+  .avatar_profile {
+    width: 4rem;
+  }
+
+  .profile_info .btn {
+    color: var(--secondary-color);
+    font-size: 0.5rem;
+  }
+
+  .chat_input {
+    padding: 0 10px;
+  }
+}

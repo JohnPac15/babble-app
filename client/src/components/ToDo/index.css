@@ -1,0 +1,25 @@
+.card-container {
+    margin-top: 5px;
+}
+
+.card {
+    background-color: var(--secondary-color);
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.card-header {
+ color: #64748b
+}
+
+
+
+.card-text {
+    padding: 30px 0;
+    color: rgba(255, 255, 255, 0.894);
+}
+
+.comments {
+    color: var(--primary-color);
+}
