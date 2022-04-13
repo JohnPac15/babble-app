@@ -6,6 +6,7 @@ const path = require('path')
 
 const { typeDefs, resolvers } = require('./schema');
 
+const PORT2 = process.env.PORT || 3000;
 const PORT = process.env.PORT || 3001;
 const app = express();
 
@@ -13,7 +14,7 @@ const http = require('http').createServer(app);
 const { v4: uuidv4 } = require('uuid');
 const io = require('socket.io')(http, {
     cors: {
-        origin: "http://localhost:3000"
+        origin: PORT2
     }    
 });
 
