@@ -24,8 +24,8 @@ const SingleToDo = (props) => {
   const handleDeleteToDo =  async (e) => {
     
     try{
-      removeToDo({variables: { id: toDo._id }});
-      return <Redirect to="/profile" />
+      removeToDo({variables: { id: toDo._id }});    
+      window.location.replace('/profile')  
     }catch(e){
       console.error(e)
     }
