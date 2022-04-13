@@ -35,6 +35,9 @@ startServer();
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/build/index.html'));
+  });
 
 // global server states
 const sessions = new Map();
@@ -321,8 +324,8 @@ io.on('connection', (socket) => {
 
 });
 
-http.listen(PORT2, () => {
-  console.log(`Connected to port ${PORT2}`);
+http.listen(4000, () => {
+  console.log(`Connected to port 4000`);
 });
 
 db.once('open', () => {
