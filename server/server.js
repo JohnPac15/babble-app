@@ -320,6 +320,10 @@ io.on('connection', (socket) => {
 
 });
 
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '../client/build')));
+  }
+
 http.listen(4000, () => {
   console.log("Connected to port 4000");
 });
