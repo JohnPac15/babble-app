@@ -1,6 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './index.css'
+import React from "react";
+import { Link } from "react-router-dom";
+import "./index.css";
 
 const ToDos = ({ toDos }) => {
 
@@ -10,7 +10,7 @@ const ToDos = ({ toDos }) => {
   }
 
   return (
-    <div className='card-container'>
+    <div className="todo">
       <h3>To Do List</h3>
       {toDos &&
         toDos.map(toDo => (
@@ -23,6 +23,7 @@ const ToDos = ({ toDos }) => {
                 <p className='card-text'>{toDo.toDoText}</p>                
               </Link>
             </div>
+
           </div>
         ))}
     </div>
