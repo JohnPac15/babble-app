@@ -6,8 +6,7 @@ const {authMiddleware} = require('./utils/auth');
 const { typeDefs, resolvers } = require('./schema');
 
 const PORT = process.env.PORT || 3001;
-const PORT2 = process.env.PORT2 || 3000;
-const PORT3 = process.env.PORT3 || 4000;
+const PORT2 = process.env.PORT || 3000;
 const app = express();
 
 const http = require('http').createServer(app);
