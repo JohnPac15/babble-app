@@ -66,7 +66,7 @@ const ToDoForm = () => {
       <div className="wrapper">
         <form className="post-form" onSubmit={handleFormSubmit}>
           <input
-            placeholder="Add a task on To Do List"
+            placeholder="Add a task"
             value={toDoText}
             className="form-input col-12 col-md-9"
             onChange={handleChange}

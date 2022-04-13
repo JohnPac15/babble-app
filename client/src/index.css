@@ -201,12 +201,11 @@ body {
   margin: 30px 0;
 }
 
-.chat_signup{
+.chat_signup {
   display: flex;
   width: 100%;
   justify-content: center;
   margin: 30px 0;
-
 }
 
 .username_input {
@@ -233,7 +232,6 @@ body {
   width: 100%;
   justify-content: space-around;
 }
-
 
 .friends-btn {
   border: none;
@@ -280,6 +278,9 @@ body {
 
   .col img {
     height: 100%;
+  }
+  .flex-container {
+    flex-direction: column;
   }
 }
 
