@@ -4,7 +4,7 @@ import 'react-calendar/dist/Calendar.css';
 import { Redirect, useParams } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
-import { ADD_FRIEND, REMOVE_TODO } from "../utils/mutations";
+import { ADD_FRIEND } from "../utils/mutations";
 import PostList from "../components/PostList";
 import FriendList from "../components/FriendList";
 import PostForm from "../components/PostForm";
@@ -85,7 +85,7 @@ function Profile(props) {
               <Calendar onChange={handleDateChange}
               value={new Date()} />
               <ToDo
-              toDo={user.toDo}
+              toDos={user.toDos}
               title={`${user.username}'s To Do...`}
             />
           </div>

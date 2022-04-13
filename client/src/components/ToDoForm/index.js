@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./index.css";
 import { useMutation } from "@apollo/client";
 import { ADD_TODO } from "../../utils/mutations";
-import { QUERY_TODO, QUERY_ME } from "../../utils/queries";
+import { QUERY_TODOS, QUERY_ME } from "../../utils/queries";
 
 const ToDoForm = () => {
   const [toDoText, setText] = useState("");
@@ -13,10 +13,10 @@ const ToDoForm = () => {
       try {
         // update thought array's cache
         // could potentially not exist yet, so wrap in a try/catch
-        const { toDo } = cache.readQuery({ query: QUERY_TODO });
+        const { toDos } = cache.readQuery({ query: QUERY_TODOS });
         cache.writeQuery({
-          query: QUERY_TODO,
-          data: { toDo: [addToDo, ...toDo] },
+          query: QUERY_TODOS,
+          data: { toDos: [addToDo, ...toDos] },
         });
       } catch (e) {
         console.error(e);
@@ -26,7 +26,7 @@ const ToDoForm = () => {
       const { me } = cache.readQuery({ query: QUERY_ME });
       cache.writeQuery({
         query: QUERY_ME,
-        data: { me: { ...me, toDo: [...me.toDo, addToDo] } },
+        data: { me: { ...me, toDos: [...me.toDos, addToDo] } },
       });
     },
   });

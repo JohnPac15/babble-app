@@ -13,7 +13,7 @@ const resolvers = {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
         .populate("posts")
-        .populate("toDo")
+        .populate("toDos")
         .populate('friends');
         return userData;
       }
@@ -23,7 +23,7 @@ const resolvers = {
         .select('-__v -password')
         .populate('friends')
         .populate('posts')
-        .populate("toDo")
+        .populate("toDos")
     },
     posts: async (parents, { createdAt }, context) => {
       const posts = await Posts.find().sort({ createdAt: -1 });
@@ -33,10 +33,13 @@ const resolvers = {
     post: async (parent, { _id }) => {
       return Posts.findOne({ _id });
     },
-    toDo: async (parents, { dueDate }, context) => {
-      const toDo = await ToDo.find();
+    toDos: async (parents, context) => {
+      const toDos = await ToDo.find();
 
-      return toDo;
+      return toDos;
+    },
+    toDo: async (parent, { _id }) => {
+      return ToDo.findOne({ _id });
     },
   },
   Mutation: {
@@ -135,7 +138,7 @@ const resolvers = {
   
         await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $push: { toDo: addToDo._id } },
+          { $push: { toDos: addToDo._id } },
           { new: true }
         );
   

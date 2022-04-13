@@ -2,37 +2,32 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./index.css";
 
-const ToDo = ({ toDo, title }) => {
-  if (!toDo.length) {
+const ToDos = ({ toDos }) => {
+
+
+  if (!toDos.length) {
     return <h3>No Tasks Yet!</h3>;
   }
 
   return (
     <div className="todo">
       <h3>To Do List</h3>
-      {toDo &&
-        toDo.map((toDos) => (
-          <div key={toDos._id} className="todo-body">
-            <p className="todo-header">
-              <Link
-                to={`/profile/${toDos.username}`}
-                style={{ fontWeight: 700 }}
-                className="text-light"
-              >
-                {toDos.username}
-              </Link>{" "}
-              Created on: {toDos.createdAt}
+      {toDos &&
+        toDos.map(toDo => (
+          <div key={toDo._id} className="card">
+            <p className="card-header">
+              Created on: {toDo.createdAt}
             </p>
-            <Link to={`/toDo/${toDos._id}`}>
-              <div className="todo-content">
-                <span className="todo-text">{toDos.toDoText}</span>
-                <button variant="outline-danger">✕</button>
-              </div>
-            </Link>
+            <div className="card-body">
+              <Link to={`/toDo/${toDo._id}`}>
+                <p className='card-text'>{toDo.toDoText}</p>                
+              </Link>
+            </div>
+
           </div>
         ))}
     </div>
   );
 };
 
-export default ToDo;
+export default ToDos;
