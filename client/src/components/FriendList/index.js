@@ -1,9 +1,17 @@
 import React from 'react';
 import { NavLink } from "react-router-dom";
+import UserList from '../UserList/index'
 
 const FriendList = ({ friendCount, username, friends }) => {
   if (!friends || !friends.length) {
-    return <p className="bg-dark text-light p-3">{username}, make some friends!</p>;
+    return(
+      <div>
+        <p className="bg-dark text-light p-3">{username}, make some friends!</p>
+        <UserList />
+      </div>
+      )
+      
+
   }
 
   return (
