@@ -1,6 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './index.css'
+import React from "react";
+import { Link } from "react-router-dom";
+import "./index.css";
 
 const ToDo = ({ toDo, title }) => {
   if (!toDo.length) {
@@ -8,27 +8,27 @@ const ToDo = ({ toDo, title }) => {
   }
 
   return (
-    <div className='card-container'>
+    <div className="todo">
       <h3>To Do List</h3>
       {toDo &&
-        toDo.map(toDos => (
-          <div key={toDos._id} className="card">
-            <p className="card-header">
-            <Link
+        toDo.map((toDos) => (
+          <div key={toDos._id} className="todo-body">
+            <p className="todo-header">
+              <Link
                 to={`/profile/${toDos.username}`}
                 style={{ fontWeight: 700 }}
                 className="text-light"
               >
                 {toDos.username}
-            </Link>{' '}
+              </Link>{" "}
               Created on: {toDos.createdAt}
             </p>
-            <div className="card-body">
-              <Link to={`/toDo/${toDos._id}`}>
-                <p className='card-text'>{toDos.toDoText}</p>
-                <button variant="outline-danger" >✕</button>
-              </Link>
-            </div>
+            <Link to={`/toDo/${toDos._id}`}>
+              <div className="todo-content">
+                <span className="todo-text">{toDos.toDoText}</span>
+                <button variant="outline-danger">✕</button>
+              </div>
+            </Link>
           </div>
         ))}
     </div>

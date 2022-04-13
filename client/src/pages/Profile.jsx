@@ -81,7 +81,7 @@ function Profile(props) {
             <div>{!userParam && <PostForm />}</div>
             <div>{!userParam && <ToDoForm />}</div>
           </div>
-          <div>
+          <div className="flex-container">
               <Calendar onChange={handleDateChange}
               value={new Date()} />
               <ToDo
