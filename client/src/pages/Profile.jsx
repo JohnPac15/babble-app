@@ -54,11 +54,11 @@ function Profile(props) {
 
   return (
     <div className="profile-wrapper">
-      {/* {userParam && (
+      {userParam && (
         <button className="" onClick={handleClick}>
           Add Friend
         </button>
-      )} */}
+      )}
 
       <div className="profile-container">
         {/* Post's here */}

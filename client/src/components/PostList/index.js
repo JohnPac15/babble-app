@@ -2,12 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './index.css'
 
-const PostList = ({ posts, title }) => {
+const PostList = ({ posts }) => {
   if (!posts.length) {
     return <h3>No posts Yet</h3>;
   }
 
-  // console.log(post._id, 'yoyo')
+  console.log(posts, 'yoyo')
   return (
     <div className='card-container'>
       <h3>Posts</h3>
