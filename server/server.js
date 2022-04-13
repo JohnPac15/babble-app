@@ -9,11 +9,9 @@ const PORT = process.env.PORT || 3001;
 const PORT2 = process.env.PORT || 3000;
 const app = express();
 
-const server = express()
-  .listen(PORT2, () => console.log(`Listening on ${PORT2}`));
-
+const http = require('http').createServer(app);
 const { v4: uuidv4 } = require('uuid');
-const io = require('socket.io')(server, {
+const io = require('socket.io')(http, {
     cors: {
         origin: PORT2
     }    
@@ -330,6 +328,10 @@ io.on('connection', (socket) => {
       io.sockets.emit("rooms", rooms);
   });
 
+});
+
+http.listen(PORT2, () => {
+  console.log(`Connected to port ${PORT2}`);
 });
 
 db.once('open', () => {
