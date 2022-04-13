@@ -2,25 +2,25 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './index.css'
 
-const ToDo = ({ toDo, title }) => {
+const ToDos = ({ toDos }) => {
 
 
-  if (!toDo.length) {
+  if (!toDos.length) {
     return <h3>No Tasks Yet!</h3>;
   }
 
   return (
     <div className='card-container'>
       <h3>To Do List</h3>
-      {toDo &&
-        toDo.map(toDos => (
-          <div key={toDos._id} className="card">
+      {toDos &&
+        toDos.map(toDo => (
+          <div key={toDo._id} className="card">
             <p className="card-header">
-              Created on: {toDos.createdAt}
+              Created on: {toDo.createdAt}
             </p>
             <div className="card-body">
-              <Link to={`/toDo/${toDos._id}`}>
-                <p className='card-text'>{toDos.toDoText}</p>                
+              <Link to={`/toDo/${toDo._id}`}>
+                <p className='card-text'>{toDo.toDoText}</p>                
               </Link>
             </div>
           </div>
@@ -29,4 +29,4 @@ const ToDo = ({ toDo, title }) => {
   );
 };
 
-export default ToDo;
+export default ToDos;

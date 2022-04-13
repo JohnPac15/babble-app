@@ -85,7 +85,7 @@ function Profile(props) {
               <Calendar onChange={handleDateChange}
               value={new Date()} />
               <ToDo
-              toDo={user.toDo}
+              toDos={user.toDos}
               title={`${user.username}'s To Do...`}
             />
           </div>

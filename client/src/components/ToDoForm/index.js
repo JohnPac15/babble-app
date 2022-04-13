@@ -13,10 +13,10 @@ const ToDoForm = () => {
       try {
         // update thought array's cache
         // could potentially not exist yet, so wrap in a try/catch
-        const { toDo } = cache.readQuery({ query: QUERY_TODOS });
+        const { toDos } = cache.readQuery({ query: QUERY_TODOS });
         cache.writeQuery({
           query: QUERY_TODOS,
-          data: { toDo: [addToDo, ...toDo] },
+          data: { toDos: [addToDo, ...toDos] },
         });
       } catch (e) {
         console.error(e);
@@ -26,7 +26,7 @@ const ToDoForm = () => {
       const { me } = cache.readQuery({ query: QUERY_ME });
       cache.writeQuery({
         query: QUERY_ME,
-        data: { me: { ...me, toDo: [...me.toDo, addToDo] } },
+        data: { me: { ...me, toDos: [...me.toDos, addToDo] } },
       });
     },
   });

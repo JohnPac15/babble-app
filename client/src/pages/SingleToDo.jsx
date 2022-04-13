@@ -50,7 +50,7 @@ const SingleToDo = (props) => {
           </div>
         </div>
         <button className="btn col-12 col-md-3" onClick={handleDeleteToDo}>
-          Delete To Do
+          Delete Task
         </button>
       </div>
     );

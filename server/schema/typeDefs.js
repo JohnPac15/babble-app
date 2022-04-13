@@ -38,8 +38,8 @@ type User {
     users: [User]
     me: User
     user(username: String!): User
-    posts :[Post]
-    post(_id: ID!):Post
+    posts: [Post]
+    post(_id: ID!): Post
     toDos: [ToDo]
     toDo(_id: ID!): ToDo
   }
@@ -52,7 +52,7 @@ type User {
     deleteFriend(friendId: ID!): User
     addToDo(toDoText: String!): ToDo
     removeToDo(_id: ID!): ToDo
-    removePost( _id: ID!):Post
+    removePost( _id: ID!): Post
     removeComment(postId: ID!, commentId: String!): Post
   }
   `;

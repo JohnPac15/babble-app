@@ -100,7 +100,7 @@ export const QUERY_USER = gql`
           commentBody
         }
       }
-      toDo {
+      toDos {
         _id
         username
         createdAt
@@ -131,7 +131,7 @@ export const QUERY_ME = gql`
           commentBody
         }        
       }
-      toDo {
+      toDos {
         _id
         username
         createdAt

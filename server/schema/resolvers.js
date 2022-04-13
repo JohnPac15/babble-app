@@ -138,7 +138,7 @@ const resolvers = {
   
         await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $push: { toDo: addToDo._id } },
+          { $push: { toDos: addToDo._id } },
           { new: true }
         );
   
