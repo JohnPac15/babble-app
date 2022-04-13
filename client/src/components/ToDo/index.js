@@ -14,6 +14,13 @@ const ToDo = ({ toDo, title }) => {
         toDo.map(toDos => (
           <div key={toDos._id} className="card">
             <p className="card-header">
+            <Link
+                to={`/profile/${toDos.username}`}
+                style={{ fontWeight: 700 }}
+                className="text-light"
+              >
+                {toDos.username}
+            </Link>{' '}
               Created on: {toDos.createdAt}
             </p>
             <div className="card-body">
