@@ -6,7 +6,7 @@ const {authMiddleware} = require('./utils/auth');
 const { typeDefs, resolvers } = require('./schema');
 
 const PORT = process.env.PORT || 3001;
-const PORT2 = process.env.PORT || 3000;
+const PORT2 = process.env.PORT2 || 3000;
 const app = express();
 
 const http = require('http').createServer(app);
@@ -35,6 +35,7 @@ startServer();
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
 if (process.env.NODE_ENV === 'production') {
     // Exprees will serve up production assets
     app.use(express.static('client/build'));
@@ -45,6 +46,11 @@ if (process.env.NODE_ENV === 'production') {
       res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
     });
   }
+
+  app.listen(PORT2, () => {
+    console.log(`Connected to port ${PORT2}`);
+  });
+  
 // global server states
 const sessions = new Map();
 const globalRoomId = uuidv4();
@@ -328,10 +334,6 @@ io.on('connection', (socket) => {
       io.sockets.emit("rooms", rooms);
   });
 
-});
-
-http.listen(PORT2, () => {
-  console.log(`Connected to port ${PORT2}`);
 });
 
 db.once('open', () => {
