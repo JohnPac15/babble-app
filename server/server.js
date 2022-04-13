@@ -332,8 +332,8 @@ io.on('connection', (socket) => {
 
 });
 
-http.listen(PORT3, () => {
-    console.log(`Connected to port ${PORT3}`);
+http.listen(4000, () => {
+    console.log(`Connected to port 4000`);
   });
   
 db.once('open', () => {
