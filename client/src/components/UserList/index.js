@@ -17,13 +17,10 @@ const UserList = () => {
   if (userState.length >= 1) {
     return(
       userState.map(user => (
-        <button className="btn w-100 display-block mb-2" key={user._id}>
+        <button className="friends-btn" key={user._id}>
           <NavLink to={`/profile/${user.username}`}>
-            User Name = {user.username}
-            <br />
-            Number of friends: {user.friends.length}
-            <br />
-            Number Posts: {user.posts.length}
+             {user.username}
+ 
             </NavLink>
         </button>
       ))

@@ -8,6 +8,7 @@ const { typeDefs, resolvers } = require('./schema');
 
 const PORT2 = process.env.PORT || 3000;
 const PORT = process.env.PORT || 3001;
+const PORT2 = process.env.PORT || 3000;
 const app = express();
 
 const http = require('http').createServer(app);
@@ -36,6 +37,17 @@ startServer();
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
+if (process.env.NODE_ENV === 'production') {
+    // Exprees will serve up production assets
+    app.use(express.static('client/build'));
+  
+    // Express serve up index.html file if it doesn't recognize route
+    const path = require('path');
+    app.get('*', (req, res) => {
+      res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    });
+  }
 
 // global server states
 const sessions = new Map();
@@ -327,9 +339,9 @@ if (process.env.NODE_ENV === 'production') {
   }
 
 http.listen(4000, () => {
-  console.log("Connected to port 4000");
-});
-
+    console.log(`Connected to port 4000`);
+  });
+  
 db.once('open', () => {
   app.listen(PORT, () => {
     console.log(`API server running on port ${PORT}!`);

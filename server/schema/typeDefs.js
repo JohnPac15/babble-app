@@ -22,7 +22,7 @@ type User {
     friendCount: Int
     posts: [Post]
     friends: [User]
-    toDo: [ToDo]
+    toDos: [ToDo]
   }
   type Comment {
     _id: ID
@@ -38,9 +38,10 @@ type User {
     users: [User]
     me: User
     user(username: String!): User
-    posts :[Post]
-    post(_id: ID!):Post
-    toDo: [ToDo]
+    posts: [Post]
+    post(_id: ID!): Post
+    toDos: [ToDo]
+    toDo(_id: ID!): ToDo
   }
   type Mutation {
     login(email: String!, password: String!): Auth
@@ -51,7 +52,7 @@ type User {
     deleteFriend(friendId: ID!): User
     addToDo(toDoText: String!): ToDo
     removeToDo(_id: ID!): ToDo
-    removePost( _id: ID!):Post
+    removePost( _id: ID!): Post
     removeComment(postId: ID!, commentId: String!): Post
   }
   `;
