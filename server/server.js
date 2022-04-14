@@ -2,9 +2,11 @@ const express = require('express');
 const db = require('./config/connection');
 const { ApolloServer } = require('apollo-server-express');
 const {authMiddleware} = require('./utils/auth');
+const path = require('path')
 
 const { typeDefs, resolvers } = require('./schema');
 
+const PORT2 = process.env.PORT || 3000;
 const PORT = process.env.PORT || 3001;
 const PORT2 = process.env.PORT || 3000;
 const app = express();
@@ -331,6 +333,10 @@ io.on('connection', (socket) => {
   });
 
 });
+
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '../client/build')));
+  }
 
 http.listen(4000, () => {
     console.log(`Connected to port 4000`);

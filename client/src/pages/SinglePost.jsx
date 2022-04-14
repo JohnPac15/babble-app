@@ -31,7 +31,7 @@ const SinglePost = (props) => {
     
     try{
       removePost({variables: { id: post._id }});
-      window.location.reload('/')
+      window.location.replace('/')
     }catch(e){
       console.error(e)
     }
