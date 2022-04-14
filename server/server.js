@@ -6,7 +6,6 @@ const path = require('path')
 
 const { typeDefs, resolvers } = require('./schema');
 
-const PORT2 = process.env.PORT || 3000;
 const PORT = process.env.PORT || 3001;
 const PORT2 = process.env.PORT || 3000;
 const app = express();

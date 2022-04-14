@@ -46,24 +46,24 @@ Your project should fulfill the following requirements:
 
 ### Server
 
-The server ...
+The server provides a web socket to listen on port 4000 for the chat server and port 3001 for the Apollo server.
 
 ### Homepage
 
-The homepage provides ...
+The homepage provides links for a user to login or sign up.
 
 ### Profile
 
-The profile page provides ...
+The profile page provides access to a user's calendar, tasks (To Do), and posts.  Only a user who is logged in will see their profile page.
 
 ### Chat
 
-The chat page provides ...
+The chat page provides a non-persisent multi-room chat.  Only logged in users can access the chat but the chat is not linked to the user's account.  Because of the port limitation in Heroku the chat function in the deployed app does not work.
 
 ### Access (Login, Register, Logout)
 
+The is function for a user to login if they already have an account, create an account if they do not have one, and logout when they leave the site.  Once a user is authenticated, they are provided with a JWT to authorize access to their account which is stored on the MongoDB.
+
 ## Links
-
-## Screenshots
-
+https://gentle-retreat-43606.herokuapp.com/
 
